@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<!-- 網站title與文字底色 -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>彼岸花7周年線上活動 / 彼岸花；開彼岸。</title>
+    <style>
+        @import url('https://fonts.googleapis.com/earlyaccess/cwtexming.css');
+        header {
+            background-color: #222;
+            color: rgba(199, 118, 131, 0.986);
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #444;
+            color: #fff;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 1px;
+            padding: 0px;
+        }
+        nav ul > li {
+            display: inline-block;
+            position: relative;
+        }
+        nav ul > li > a {
+            display: block;
+            text-decoration: none;
+            color: #fff;
+            padding: 5px;
+            margin: 0 5px;
+        }
+        nav a:hover {
+            background-color: #666;
+            color: rgb(248, 161, 161);
+        }
+        .active {
+            color: rgb(250, 136, 136);
+        }
+        div {
+            position: relative;
+        }
+        @keyframes fadein {
+            0% {opacity: 0;}
+            100% {opacity: 1;}
+            from {left: -100px;}
+            to   {left: 0px;}
+        }
+        .ant {
+            animation: fadein 1s ease;
+        }
+        center {
+            font-family: 'cwTeXMing', 'Arial', serif;
+        }
+        /* 子選單樣式 */
+        .submenu {
+            display: none;
+            position: absolute;
+            background-color: #444;
+            box-shadow: 0px 2px 5px #666;
+            z-index: 1;
+        }
+        nav ul > li:hover .submenu {
+            display: block;
+        }
+        .submenu > li > a {
+            display: block;
+            padding: 5px 5px;
+            text-decoration: none;
+            color: #fff;
+        }
+        .submenu > li > a:hover {
+            background-color: #666;
+            color: rgb(248, 161, 161);
+        }
+    </style>
+    
+    <script>
+        $(document).ready(function(){
+            $('.tr_1_more').on("click",function(){
+                $('.tr_1_more').hide() ;
+                $('.tr_1').hide() ;
+                $('.tr_2').show() ;
+            })
+            $('.tr_1_more').show() ;
+            $('.tr_1').show() ;
+            $('.tr_2').hide() ;
+        })
+    </script>
+</head>
+
+<body>
+    <!-- 網站title -->
+    <center>
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tr>
+                <td class="styleNewsContentRight" align="center">
+                    <header>
+                        <h1>彼岸花；開彼岸。</h1>
+                    </header>
+                </td>
+            </tr>
+        </table>
+    </center>
+    <center>
+        <!-- 網址目錄 -->
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tr>
+                <td class="styleNewsContentRight" align="center">
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="./Home.html">Home</a>
+                            </li>
+                            <li>
+                                <a href="./Aboutus.html">About us</a>
+                                <ul class="submenu">
+                                    <li><a href="./Intro.html">Intro</a></li>
+                                    <li><a href="./Managers.html">Managers</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="active" href="./News.html">News</a>
+                            </li>
+                            <li>
+                                <a href="./Album.html">Album</a>
+                            </li>
+                            <li>
+                                <a href="./Login.html">Login</a>
+                            </li>
+                            <li>
+                                <a href="https://forum.gamer.com.tw/C.php?bsn=16583&snA=58352&tnum=747&subbsn=12" target="_blank">Join us</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </td>
+            </tr>
+        </table>
+    <center>
+        <!-- 文字介紹 -->
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tbody>
+                <tr>
+                    <td colspan="2">
+                        <div class="ant">
+                            <p>
+                                <big><big><font color="pink">2022彼岸花7週年線上活動</font></big></big>
+                                <br>
+                                <br>
+                                <big>活動一: 遊戲QA搶答</big>
+                                <br>
+                                <br>
+                                時間: 8/20 晚上8點, 人在且開著遊戲, 能在公會頻打字即可
+                                <br>
+                                活動內容:
+                                <br>
+                                -採計分制，取前三名
+                                <br>
+                                -最快回答正確3分，第二名2分，第三位1分，當第三位出現時結束作答
+                                <br>
+                                -題目共20題, 查答案的方式不拘, 可隨時加入搶答
+                                <br>
+                                -向SweetTears密頻回答, 字錯也受理, 發音對即可
+                                <br>
+                                <br>
+                                獎金:
+                                <br>
+                                第一名 2000萬 - AsamaSora
+                                <br>
+                                第二名 1750萬 - 瓏月夜
+                                <br>
+                                第三名 1500萬 - 織羽未來、蘿蕾
+                                <br>
+                                第四名 1000萬 - 姆姆陪玩、屎加雷喬含森、鳶夜華
+                                <br>
+                                卡布蘭特別獎 500萬 - 織羽未來、AsamaSora、miulYwu
+                                <br>
+                                參加獎 300萬
+                                <br>
+                                <br>
+                                <big>活動二: 阿呱呱賭船</big>
+                                <br>
+                                <br>
+                                時間: 8/21 晚上9點半, 人在且開著遊戲, 能在公會頻打字即可
+                                <br>
+                                活動內容:
+                                <br>
+                                -米莉鴨船長和他的快樂夥伴總共會打20場副本, 在每場副本開船到結束前猜第一名輸出的小數點第一位數字
+                                <br>
+                                -公會成員在公會頻喊0~9的數字即可
+                                <br>
+                                -可隨時加入
+                                <br>
+                                <br>
+                                獎金:
+                                <br>
+                                參加獎200W、猜對1場+100W, 若該場次沒人猜中, 下一場次獎金加倍
+                                <br>
+                                貢龜倒楣鬼獎 1777777W - 姆姆陪玩、CrimsonQ 恭喜這兩個衰鬼完美迴避qwq
+                                <br>
+                                <br>
+                                <big>活動三: 躲貓貓</big>
+                                <br>
+                                <br>
+                                時間: 8/27 晚上9點到10點, 在公會小屋大廳集合
+                                <br>
+                                第一個鬼由檸檬靜兒擔任
+                                <br>
+                                -鬼躲好之後開始計時, 3分鐘內找鬼, 找到鬼之後要在公會頻喊找到了
+                                <br>
+                                -找到鬼的人擔任下一個鬼
+                                <br>
+                                -時間1分半提示城鎮, 2分半提示頻道
+                                <br>
+                                -鬼找到躲藏點後就不可再移動, 不可利用BUG來進行躲藏
+                                <br>
+                                -找鬼的人必須要在鬼的旁邊, 看得到鬼的角色才算找到, 不能只是看到ID
+                                <br>
+                                -躲藏地點: 42頻、39頻、171頻、108頻道的4個城鎮
+                                <br>
+                                -當天在公會小屋大廳集合者皆有參加獎
+                                <br>
+                                -中途參加者需在公會頻報備才有參加獎, 並在下一場開始後加入
+                                <br>
+                                <br>
+                                獎金:
+                                <br>
+                                -當鬼一次獎金+150W
+                                <br>
+                                -躲藏超過1分半+50W, 2分半+50W, 3分鐘後都沒被找到就再+100W, 最高可得350W喔
+                                <br>
+                                -參加獎: 200W
+                                <br>
+                                <br>
+                                <big>活動四: 公會好夥伴...嗎</big>
+                                <br>
+                                <br>
+                                時間: 8/20 0:00~ 8/28中午12點以前
+                                <br>
+                                活動內容:
+                                <br>
+                                -活動期間內, 和公會好碰U(不限人數)組隊擊倒赤怒酋長
+                                <br>
+                                -需派代表上傳截圖到DC
+                                <br>
+                                -截圖基本需有兩張, 出船合照和結算合照, 船長+全部船員即獲得抽獎資格
+                                <br>
+                                -參加獎不會因參加次數越多而重複計算
+                                <br>
+                                <br>
+                                獎金:
+                                <br>
+                                大獎 1500W  2名 - 姆姆陪玩、大茄子
+                                <br>
+                                次獎 1000W  3名 - 羽生朧夜、織羽未來、雲醉月
+                                <br>
+                                叁獎 800W    3名 - myummi、倘然 、小小小女孩 
+                                <br>
+                                參加獎 200W
+                                <br>
+                                <br>
+                                <big>活動五: 你是....大佬嗎</big>
+                                <br>
+                                <br>
+                                時間: 8/20 0:00~ 8/28中午12點以前
+                                <br>
+                                活動內容: 
+                                <br>
+                                -活動期間內, 可從公會組團一起打任意一場絕命
+                                <br>
+                                -防具必須全脫, 僅留下武器、輔助裝備、技能道具、雙戒指
+                                <br>
+                                -需派代表上傳截圖到DC
+                                <br>
+                                -截圖基本需有兩張, 出船合照和結算合照, 船長+全部船員即獲得參加獎
+                                <br>
+                                -參加獎不會因參加次數越多而重複計算
+                                <br>
+                                <br>
+                                獎金:
+                                <br>
+                                參加獎 300W, 通關+200W, 輸出前四+100W, 輸出第一和第二+100W, 輸出超過20%+200W
+                                <br>
+                                <br>
+                                以上消息同步更新到<a href="https://forum.gamer.com.tw/Co.php?bsn=16583&sn=409209&subbsn=12&bPage=0" target="_blank">巴哈姆特</a>和DC#ꕥ公會活動公告ꕥ
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+    <center>
+        <!-- 文字介紹 -->
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080px">
+            <tbody>
+                <tr>
+                    <td align="left" valign="top" width="540px">
+                        <div class="ant">
+                            <p align="center">
+                                <big>公會好夥伴...嗎 - 參予者與得獎名單</big>
+                                <br>
+                                <img src="./index/7th/7th_中獎名單.png" alt="7th_中獎名單"/>
+                            </p>
+                        </div>
+                    </td>
+                    <td align="left" valign="top" width="540px">
+                        <div class="ant">
+                            <p align="center">
+                                <big>公會好夥伴...嗎 - 參予者與得獎名單</big>
+                                <br>
+                                <img src="./index/7th/7TH_大佬.png" alt="7TH_大佬" width="280px"/>
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+    <br>
+    <br>
+    <br>
+    <center>
+        <p>
+            <a href="./News-P5.html">Back</a>
+        </p>
+    </center>
+    <!-- 留言功能區域 -->
+    <center>
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tbody>
+                <tr>
+                    <td colspan="2" width="900px">
+                        <div class="ant">
+                            <p>
+                                <big><big><font color="pink">💬 活動留言討論區</font></big></big>
+                                <br>
+                                <br>
+                                <div id="commentSection">
+                                    <!-- 留言表單 -->
+                                    <div id="commentForm" style="display: none;">
+                                        <textarea id="commentText" placeholder="請輸入您的留言..." style="width: 100%; height: 100px; padding: 10px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; margin-bottom: 15px; resize: vertical;"></textarea>
+                                        <br>
+                                        <button onclick="submitComment()" style="background-color: rgba(199, 118, 131, 0.986); color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">發表留言</button>
+                                    </div>
+                                    
+                                    <!-- 未登入提示 -->
+                                    <div id="loginPrompt" style="text-align: center; padding: 20px; background-color: #f0f0f0; border-radius: 8px; margin-bottom: 20px;">
+                                        <p style="color: #666; margin: 0;">🔒 只有已登入的成員才能留言</p>
+                                        <a href="./Login.html" style="color: rgba(199, 118, 131, 0.986); text-decoration: none; font-weight: bold;">點此登入</a>
+                                    </div>
+                                    
+                                    <!-- 留言顯示區域 -->
+                                    <div id="commentsDisplay" style="margin-top: 20px;">
+                                        <div id="noComments" style="text-align: center; color: #999; font-style: italic; padding: 20px;">
+                                            目前還沒有留言
+                                        </div>
+                                    </div>
+                                </div>
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+    
+    <br>
+    <br>
+    <center>
+        <!-- 版權聲明 -->
+        <small>
+            <p>&copy; 2024 SweetTears。保留所有權利。</p>
+        </small>
+    </center>
+
+    <script>
+        // 檢查登入狀態並顯示對應的留言功能
+        function checkLoginStatus() {
+            const savedUser = localStorage.getItem('currentUser');
+            const savedAdmin = localStorage.getItem('isAdmin') === 'true';
+            
+            if (savedUser && !savedAdmin) {
+                // 已登入且非管理員，顯示留言表單
+                document.getElementById('commentForm').style.display = 'block';
+                document.getElementById('loginPrompt').style.display = 'none';
+                loadComments();
+            } else {
+                // 未登入或管理員，顯示登入提示
+                document.getElementById('commentForm').style.display = 'none';
+                document.getElementById('loginPrompt').style.display = 'block';
+                loadComments(); // 仍然載入留言供瀏覽
+            }
+        }
+        
+        // 載入留言
+        function loadComments() {
+            const comments = JSON.parse(localStorage.getItem('anniversary7Comments') || '[]');
+            const commentsDisplay = document.getElementById('commentsDisplay');
+            
+            if (comments.length === 0) {
+                document.getElementById('noComments').style.display = 'block';
+                return;
+            }
+            
+            document.getElementById('noComments').style.display = 'none';
+            commentsDisplay.innerHTML = comments.map(comment => `
+                <div style="background-color: #f9f9f9; padding: 15px; margin-bottom: 15px; border-radius: 8px; border-left: 4px solid rgba(199, 118, 131, 0.986);">
+                    <div style="font-weight: bold; color: rgba(199, 118, 131, 0.986); margin-bottom: 8px;">
+                        ${escapeHtml(comment.user)} 
+                        <span style="font-size: 12px; color: #999; font-weight: normal;">${comment.timestamp}</span>
+                    </div>
+                    <div style="color: #333; line-height: 1.5;">${escapeHtml(comment.text)}</div>
+                </div>
+            `).join('');
+        }
+        
+        // 提交留言
+        function submitComment() {
+            const commentText = document.getElementById('commentText').value.trim();
+            const savedUser = localStorage.getItem('currentUser');
+            const savedAdmin = localStorage.getItem('isAdmin') === 'true';
+            
+            if (!commentText) {
+                alert('請輸入留言內容！');
+                return;
+            }
+            
+            if (!savedUser) {
+                alert('請先登入！');
+                return;
+            }
+            
+            if (savedAdmin) {
+                alert('管理員無法發表留言！');
+                return;
+            }
+            
+            const comments = JSON.parse(localStorage.getItem('anniversary7Comments') || '[]');
+            const newComment = {
+                user: savedUser,
+                text: commentText,
+                timestamp: new Date().toLocaleString('zh-TW')
+            };
+            
+            comments.unshift(newComment); // 新留言放在最前面
+            localStorage.setItem('anniversary7Comments', JSON.stringify(comments));
+            
+            document.getElementById('commentText').value = '';
+            loadComments();
+        }
+        
+        // HTML 轉義函數
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        // 頁面載入時檢查登入狀態
+        document.addEventListener('DOMContentLoaded', checkLoginStatus);
+    </script>
+</body>
+
+
+</html>

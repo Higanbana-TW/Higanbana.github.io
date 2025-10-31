@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<!-- 網站title與文字底色 -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album: 6th Anniversary / 彼岸花；開彼岸。</title>
+    <style>
+        @import url('https://fonts.googleapis.com/earlyaccess/cwtexming.css');
+        header {
+            background-color: #222;
+            color: rgba(199, 118, 131, 0.986);
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #444;
+            color: #fff;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 1px;
+            padding: 0px;
+        }
+        nav ul > li {
+            display: inline-block;
+            position: relative;
+        }
+        nav ul > li > a {
+            display: block;
+            text-decoration: none;
+            color: #fff;
+            padding: 5px;
+            margin: 0 5px;
+        }
+        nav a:hover {
+            background-color: #666;
+            color: rgb(248, 161, 161);
+        }
+        .active {
+            color: rgb(250, 136, 136);
+        }
+        div {
+            position: relative;
+        }
+        @keyframes fadein {
+            0% {opacity: 0;}
+            100% {opacity: 1;}
+            from {left: -100px;}
+            to   {left: 0px;}
+        }
+        .ant {
+            animation: fadein 1s ease;
+        }
+        @keyframes fadein_top {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+
+            from {
+                top: -50px;
+            }
+
+            to {
+                top: 0px;
+            }
+        }
+
+        .ant_top {
+            animation: fadein_top 2s ease;
+        }
+
+        @keyframes fadein_bot {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+
+            from {
+                bottom: -50px;
+            }
+
+            to {
+                bottom: 0px;
+            }
+        }
+
+        .ant_bot {
+            animation: fadein_bot 2s ease;
+        }
+
+        center {
+            font-family: 'cwTeXMing', 'Arial', serif;
+        }
+        /* 子選單樣式 */
+        .submenu {
+            display: none;
+            position: absolute;
+            background-color: #444;
+            box-shadow: 0px 2px 5px #666;
+            z-index: 1;
+        }
+        nav ul > li:hover .submenu {
+            display: block;
+        }
+        .submenu > li > a {
+            display: block;
+            padding: 5px 5px;
+            text-decoration: none;
+            color: #fff;
+        }
+        .submenu > li > a:hover {
+            background-color: #666;
+            color: rgb(248, 161, 161);
+        }
+        /* 方塊樣式 */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-gap: 10px;
+        }
+        .gallery img {
+            width: 100%;
+            height: auto;
+            max-width: 200px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .gallery img:hover {
+            transform: scale(1.1);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            height: 70%;
+            max-height: 700px;
+            position: relative;
+        }
+        .close {
+            color: #fff;
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -50px;
+            color: #fff;
+            font-weight: bold;
+            font-size: 20px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+        .prev {
+            left: 0;
+        }
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .thumbnail {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            overflow-x: auto;
+            scrollbar-width: thin;
+        }
+        .thumbnail::-webkit-scrollbar {
+            width: 5px;
+        }
+        .thumbnail::-webkit-scrollbar-thumb {
+            background-color: #888;
+        }
+        .thumbnail img {
+            width: 40px;
+            max-height: 40px;
+            margin-right: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .thumbnail img:hover {
+            transform: scale(1.1);
+        }
+        .thumbnail img.active {
+            border: 5px solid #333;
+            border-radius: 5px;
+        }
+        .thumbnail img:last-child {
+            margin-right: 0;
+        }
+        .caption {
+            color: #fff;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+    </style>
+    
+    <script>
+        $(document).ready(function(){
+            $('.tr_1_more').on("click",function(){
+                $('.tr_1_more').hide() ;
+                $('.tr_1').hide() ;
+                $('.tr_2').show() ;
+            })
+            $('.tr_1_more').show() ;
+            $('.tr_1').show() ;
+            $('.tr_2').hide() ;
+        })
+    </script>
+</head>
+
+<body>
+    <!-- 網站title -->
+    <center>
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tr>
+                <td class="styleNewsContentRight" align="center">
+                    <header>
+                        <h1>彼岸花；開彼岸。</h1>
+                    </header>
+                </td>
+            </tr>
+        </table>
+    </center>
+    <center>
+        <!-- 網址目錄 -->
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tr>
+                <td class="styleNewsContentRight" align="center">
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="./Home.html">Home</a>
+                            </li>
+                            <li>
+                                <a href="./Aboutus.html">About us</a>
+                                <ul class="submenu">
+                                    <li><a href="./Intro.html">Intro</a></li>
+                                    <li><a href="./Managers.html">Managers</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="./News.html">News</a>
+                            </li>
+                            <li>
+                                <a class="active" href="./Album.html">Album</a>
+                            </li>
+                            <li>
+                                <a href="./Login.html">Login</a>
+                            </li>
+                            <li>
+                                <a href="https://forum.gamer.com.tw/C.php?bsn=16583&snA=58352&tnum=747&subbsn=12" target="_blank">Join us</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </td>
+            </tr>
+        </table>
+    </center>
+    <center>
+        <!-- 文字介紹 -->
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tbody>
+                <tr>
+                    <td align="center" valign="top" width="960">
+                        <div class="ant_bot">
+                            <h1>
+                                <small><font color="#f8a1a1">6TH ANNIVERSARY</font></small>
+                            </h1>
+                        </div>
+                        <div class="ant_top">
+                            <br>
+                            <p>奢望明日依舊</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" valign="top" width="960">
+                        <h1>
+                            <small><small>6周年-活動5照片合輯</small></small>
+                        </h1>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" valign="top" width="960">
+                        <div class="container">
+                            <div class="gallery">
+                                <img src="./Album/6TH ANNIVERSARY/event5/2021_12_23_0000.png" alt="希望明年之後越來越青春美麗😋 - 檸檬佳兒">
+                                <img src="./Album/6TH ANNIVERSARY/event5/2021_12_23_0002.png" alt="希望可以越來越好 -望月">
+                                <img src="./Album/6TH ANNIVERSARY/event5/2021_12_25_0001.png" alt="👍 希望明年大家都發大財 -青見女良">
+                                <img src="./Album/6TH ANNIVERSARY/event5/39b34a026aa25f80.png" alt="希望明年飛向歐洲 ，當個歐洲人 - 呆咖啡">
+                                <img src="./Album/6TH ANNIVERSARY/event5/a3eaabb6c5bb3e93.png" alt="希望明年一切順利，訂單大增，出國遊玩，當歐洲人 - 刺刺滴">
+                                <img src="./Album/6TH ANNIVERSARY/event5/heroes_x64_2021-12-23_00-02-31.png" alt="瑪英如酒 玩久就醉 喝傻了才玩得下去 - 奈雅">
+                                <img src="./Album/6TH ANNIVERSARY/event5/unknown (1).png" alt="希望明年多賺點，願榮光照亮每一個角落，畀啲掙扎!!! - 重劍上的女孩">
+                                <img src="./Album/6TH ANNIVERSARY/event5/unknown (2).png" alt="希望明年繼續當個歐洲人，有個女朋友陪伴 - 卡季法">
+                                <img src="./Album/6TH ANNIVERSARY/event5/unknown (3).png" alt="明年一定倒 - 醫小八">
+                                <img src="./Album/6TH ANNIVERSARY/event5/unknown (4).png" alt="希望明年能繼續開心的玩遊戲 - 鳶夜華">
+                                <img src="./Album/6TH ANNIVERSARY/event5/unknown (5).png" alt="希望所有壞蛋從世界上消失!! - VVG">
+                                <img src="./Album/6TH ANNIVERSARY/event5/unknown.png" alt="希望天天都有保 生活過的好 調皮多搗蛋 - 優雅的小泉">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" valign="top" width="960">
+                        <h1>
+                            <small><small>6周年-成員大合照</small></small>
+                        </h1>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" valign="top" width="960">
+                        <div class="container">
+                            <div class="gallery">
+                                <img src="./Album/6TH ANNIVERSARY/2021_12_18_0011.png" alt=" ">
+                                <img src="./Album/6TH ANNIVERSARY/2021_12_18_0012.png" alt=" ">
+                                <img src="./Album/6TH ANNIVERSARY/2021_12_18_0013.png" alt=" ">
+                                <img src="./Album/6TH ANNIVERSARY/2021_12_18_0015.png" alt=" ">
+                                <img src="./Album/6TH ANNIVERSARY/2021_12_18_0016.png" alt=" ">
+                                <img src="./Album/6TH ANNIVERSARY/heroes_x64_2021-12-18_23-13-08.png" alt=" ">
+                                <img src="./Album/6TH ANNIVERSARY/heroes_x64_2021-12-18_23-14-59.png" alt=" ">
+                                <img src="./Album/6TH ANNIVERSARY/heroes_x64_2021-12-18_23-15-19.png" alt=" ">
+                                <img src="./Album/6TH ANNIVERSARY/heroes_x64_2021-12-18_23-15-48.png" alt=" ">
+                                <img src="./Album/6TH ANNIVERSARY/heroes_x64_2021-12-18_23-16-11.png" alt=" ">
+                                <img src="./Album/6TH ANNIVERSARY/heroes_x64_2021-12-18_23-16-19.png" alt=" ">
+                                <img src="./Album/6TH ANNIVERSARY/heroes_x64_2021-12-18_23-18-46.png" alt=" ">
+                                <img src="./Album/6TH ANNIVERSARY/heroes_x64_2021-12-18_23-20-35.png" alt=" ">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+        <div class="caption" id="caption"></div>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        <div class="thumbnail"></div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center>
+        <p>
+            <a href="./Album.html">Back</a>
+        </p>
+    </center>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center>
+    <!-- 版權聲明 -->
+        <small>
+            <p>&copy; 2024 SweetTears。保留所有權利。</p>
+        </small>
+    </center>
+
+    <script>
+        var modal = document.getElementById("myModal");
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        var images = document.querySelectorAll(".gallery img");
+        var thumbnails = document.querySelector(".thumbnail");
+        var slideIndex = 0;
+
+        images.forEach(function(img, index){
+            img.addEventListener("click", function(){
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                slideIndex = index;
+                showThumbnails();
+                showCaption();
+            });
+        });
+
+        var span = document.getElementsByClassName("close")[0];
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        };
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var slides = document.querySelectorAll('.gallery img');
+            if (n >= slides.length) {slideIndex = 0;}
+            if (n < 0) {slideIndex = slides.length - 1;}
+            modalImg.src = slides[slideIndex].src;
+            showThumbnails();
+            showCaption();
+        }
+
+        function showThumbnails() {
+            thumbnails.innerHTML = "";
+            images.forEach(function(img, index){
+                var thumb = document.createElement("img");
+                thumb.src = img.src;
+                thumb.alt = "thumbnail " + (index + 1);
+                if (index === slideIndex) {
+                    thumb.classList.add("active");
+                }
+                thumb.onclick = function() {
+                    currentSlide(index);
+                };
+                thumbnails.appendChild(thumb);
+            });
+        }
+
+        function showCaption() {
+            captionText.innerHTML = images[slideIndex].alt;
+        }
+    </script>
+    
+</body>
+
+
+</html>

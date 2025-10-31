@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<!-- 網站title與文字底色 -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2019彼岸花四周年活動公告 / 彼岸花；開彼岸。</title>
+    <style>
+        @import url('https://fonts.googleapis.com/earlyaccess/cwtexming.css');
+        header {
+            background-color: #222;
+            color: rgba(199, 118, 131, 0.986);
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #444;
+            color: #fff;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 1px;
+            padding: 0px;
+        }
+        nav ul > li {
+            display: inline-block;
+            position: relative;
+        }
+        nav ul > li > a {
+            display: block;
+            text-decoration: none;
+            color: #fff;
+            padding: 5px;
+            margin: 0 5px;
+        }
+        nav a:hover {
+            background-color: #666;
+            color: rgb(248, 161, 161);
+        }
+        .active {
+            color: rgb(250, 136, 136);
+        }
+        div {
+            position: relative;
+        }
+        @keyframes fadein {
+            0% {opacity: 0;}
+            100% {opacity: 1;}
+            from {left: -100px;}
+            to   {left: 0px;}
+        }
+        .ant {
+            animation: fadein 1s ease;
+        }
+        center {
+            font-family: 'cwTeXMing', 'Arial', serif;
+        }
+        /* 子選單樣式 */
+        .submenu {
+            display: none;
+            position: absolute;
+            background-color: #444;
+            box-shadow: 0px 2px 5px #666;
+            z-index: 1;
+        }
+        nav ul > li:hover .submenu {
+            display: block;
+        }
+        .submenu > li > a {
+            display: block;
+            padding: 5px 5px;
+            text-decoration: none;
+            color: #fff;
+        }
+        .submenu > li > a:hover {
+            background-color: #666;
+            color: rgb(248, 161, 161);
+        }
+    </style>
+    
+    <script>
+        $(document).ready(function(){
+            $('.tr_1_more').on("click",function(){
+                $('.tr_1_more').hide() ;
+                $('.tr_1').hide() ;
+                $('.tr_2').show() ;
+            })
+            $('.tr_1_more').show() ;
+            $('.tr_1').show() ;
+            $('.tr_2').hide() ;
+        })
+    </script>
+</head>
+
+<body>
+    <!-- 網站title -->
+    <center>
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tr>
+                <td class="styleNewsContentRight" align="center">
+                    <header>
+                        <h1>彼岸花；開彼岸。</h1>
+                    </header>
+                </td>
+            </tr>
+        </table>
+    </center>
+    <center>
+        <!-- 網址目錄 -->
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tr>
+                <td class="styleNewsContentRight" align="center">
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="./Home.html">Home</a>
+                            </li>
+                            <li>
+                                <a href="./Aboutus.html">About us</a>
+                                <ul class="submenu">
+                                    <li><a href="./Intro.html">Intro</a></li>
+                                    <li><a href="./Managers.html">Managers</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="active" href="./News.html">News</a>
+                            </li>
+                            <li>
+                                <a href="./Album.html">Album</a>
+                            </li>
+                            <li>
+                                <a href="./Login.html">Login</a>
+                            </li>
+                            <li>
+                                <a href="https://forum.gamer.com.tw/C.php?bsn=16583&snA=58352&tnum=747&subbsn=12" target="_blank">Join us</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </td>
+            </tr>
+        </table>
+    <center>
+        <!-- 文字介紹 -->
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tbody>
+                <tr>
+                    <td colspan="2">
+                        <div class="ant">
+                            <p>
+                                <big><big><font color="pink">2019彼岸花四周年活動公告</font></big></big>
+                                <br>
+                                <br>
+                                活動一: 躲貓貓
+                                <br>
+                                <br>
+                                時間: 10/5 21:00
+                                <br>
+                                活動地點: 在公會小屋大廳集合
+                                <br>
+                                活動內容:
+                                <br>
+                                -第一個鬼由醫小八擔任
+                                <br>
+                                -躲好之後，開始計時，4分鐘內找鬼，找到鬼之後要打出「彼岸花4歲生日快樂!!」，
+                                <br>
+                                -以第一個打字的人擔任下一個鬼。
+                                <br>
+                                -當時間到2分鐘時，提示頻道，3分鐘時，提示城鎮，可臨時加入
+                                <br>
+                                -躲藏地點：12頻、54頻、171頻、42頻道的4個城鎮
+                                <br>
+                                -鬼找到躲藏點後就不可再移動，可透過偽裝、等任何方式來進行躲藏，不可利用BUG來進行躲藏。
+                                <br>
+                                <br>
+                                活動獎勵:
+                                <br>
+                                當鬼的人，基本獎金100W，2分+50W，3分鐘+50W，4分鐘後都沒被找到就再+50W，最高可得250W喔~
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+    <center>
+        <!-- 文字介紹 -->
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tbody>
+                <tr>
+                    <td colspan="2">
+                        <div class="ant">
+                            <p>
+                                活動二: 櫻子華麗搶答time
+                                <br>
+                                <br>
+                                時間: 10/9 21:00
+                                <br>
+                                活動地點: 在任何地方打開你的公會頻道
+                                <br>
+                                活動內容:
+                                <br>
+                                -回答方式以向秋華櫻子密頻的方式回答你的答案，答案字對字錯都會受理，只要發音對即可
+                                <br>
+                                -櫻子將會先報題號再報題目，活動是計分制，以總分數高低來排前三名，
+                                <br>
+                                -而回答時，則會依照最快回答出正確答案的前三者予以計分，其餘不計分，
+                                <br>
+                                -最快回答得3分，再來兩分，第三位1分，當出現第三位回答出正確答案後就會公布答案並且結束作答，
+                                <br>
+                                -題目總共20題，每5題會統結參予者的分數總和，回答時，可以透過任何方式取得答案，中途皆可參加、離開。
+                                <br>
+                                <br>
+                                活動獎勵:
+                                <br>
+                                第一名: 3000W
+                                <br>
+                                第二名: 2000W
+                                <br>
+                                第三名: 1000W  
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+    <center>
+        <!-- 文字介紹 -->
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tbody>
+                <tr>
+                    <td colspan="2">
+                        <div class="ant">
+                            <p>
+                                活動三: Bonus活動
+                                <br>
+                                <br>
+                                時間: 10/5 躲貓貓結束之後~10/9 21:00
+                                <br>
+                                10/5號躲貓貓後，活動內容將會公布喔~
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+    <br>
+    <br>
+    <br>
+    <center>
+        <p>
+            <a href="./News-P4.html">Back</a>
+        </p>
+    </center>
+    <!-- 留言功能區域 -->
+    <center>
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tbody>
+                <tr>
+                    <td colspan="2" width="900px">
+                        <div class="ant">
+                            <p>
+                                <big><big><font color="pink">💬 活動留言討論區</font></big></big>
+                                <br>
+                                <br>
+                                <div id="commentSection">
+                                    <!-- 留言表單 -->
+                                    <div id="commentForm" style="display: none;">
+                                        <textarea id="commentText" placeholder="請輸入您的留言..." style="width: 100%; height: 100px; padding: 10px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; margin-bottom: 15px; resize: vertical;"></textarea>
+                                        <br>
+                                        <button onclick="submitComment()" style="background-color: rgba(199, 118, 131, 0.986); color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">發表留言</button>
+                                    </div>
+                                    
+                                    <!-- 未登入提示 -->
+                                    <div id="loginPrompt" style="text-align: center; padding: 20px; background-color: #f0f0f0; border-radius: 8px; margin-bottom: 20px;">
+                                        <p style="color: #666; margin: 0;">🔒 只有已登入的成員才能留言</p>
+                                        <a href="./Login.html" style="color: rgba(199, 118, 131, 0.986); text-decoration: none; font-weight: bold;">點此登入</a>
+                                    </div>
+                                    
+                                    <!-- 留言顯示區域 -->
+                                    <div id="commentsDisplay" style="margin-top: 20px;">
+                                        <div id="noComments" style="text-align: center; color: #999; font-style: italic; padding: 20px;">
+                                            目前還沒有留言
+                                        </div>
+                                    </div>
+                                </div>
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+    
+    <br>
+    <br>
+    <center>
+        <!-- 版權聲明 -->
+        <small>
+            <p>&copy; 2024 SweetTears。保留所有權利。</p>
+        </small>
+    </center>
+
+    <script>
+        // 檢查登入狀態並顯示對應的留言功能
+        function checkLoginStatus() {
+            const savedUser = localStorage.getItem('currentUser');
+            const savedAdmin = localStorage.getItem('isAdmin') === 'true';
+            
+            if (savedUser && !savedAdmin) {
+                // 已登入且非管理員，顯示留言表單
+                document.getElementById('commentForm').style.display = 'block';
+                document.getElementById('loginPrompt').style.display = 'none';
+                loadComments();
+            } else {
+                // 未登入或管理員，顯示登入提示
+                document.getElementById('commentForm').style.display = 'none';
+                document.getElementById('loginPrompt').style.display = 'block';
+                loadComments(); // 仍然載入留言供瀏覽
+            }
+        }
+        
+        // 載入留言
+        function loadComments() {
+            const comments = JSON.parse(localStorage.getItem('anniversary4Comments') || '[]');
+            const commentsDisplay = document.getElementById('commentsDisplay');
+            
+            if (comments.length === 0) {
+                document.getElementById('noComments').style.display = 'block';
+                return;
+            }
+            
+            document.getElementById('noComments').style.display = 'none';
+            commentsDisplay.innerHTML = comments.map(comment => `
+                <div style="background-color: #f9f9f9; padding: 15px; margin-bottom: 15px; border-radius: 8px; border-left: 4px solid rgba(199, 118, 131, 0.986);">
+                    <div style="font-weight: bold; color: rgba(199, 118, 131, 0.986); margin-bottom: 8px;">
+                        ${escapeHtml(comment.user)} 
+                        <span style="font-size: 12px; color: #999; font-weight: normal;">${comment.timestamp}</span>
+                    </div>
+                    <div style="color: #333; line-height: 1.5;">${escapeHtml(comment.text)}</div>
+                </div>
+            `).join('');
+        }
+        
+        // 提交留言
+        function submitComment() {
+            const commentText = document.getElementById('commentText').value.trim();
+            const savedUser = localStorage.getItem('currentUser');
+            const savedAdmin = localStorage.getItem('isAdmin') === 'true';
+            
+            if (!commentText) {
+                alert('請輸入留言內容！');
+                return;
+            }
+            
+            if (!savedUser) {
+                alert('請先登入！');
+                return;
+            }
+            
+            if (savedAdmin) {
+                alert('管理員無法發表留言！');
+                return;
+            }
+            
+            const comments = JSON.parse(localStorage.getItem('anniversary4Comments') || '[]');
+            const newComment = {
+                user: savedUser,
+                text: commentText,
+                timestamp: new Date().toLocaleString('zh-TW')
+            };
+            
+            comments.unshift(newComment); // 新留言放在最前面
+            localStorage.setItem('anniversary4Comments', JSON.stringify(comments));
+            
+            document.getElementById('commentText').value = '';
+            loadComments();
+        }
+        
+        // HTML 轉義函數
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        // 頁面載入時檢查登入狀態
+        document.addEventListener('DOMContentLoaded', checkLoginStatus);
+    </script>
+</body>
+
+
+</html>

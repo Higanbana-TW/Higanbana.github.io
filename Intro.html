@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-Hant_top">
+
+<!-- 網站title與文字底色 -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About us: Intro / 彼岸花；開彼岸。</title>
+    <style>
+        @import url('https://fonts.googleapis.com/earlyaccess/cwtexming.css');
+        header {
+            background-color: #222;
+            color: rgba(199, 118, 131, 0.986);
+            padding: 10px;
+            text-align: center;
+        }
+        nav {
+            background-color: #444;
+            color: #fff;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 1px;
+            padding: 0px;
+        }
+        nav ul > li {
+            display: inline-block;
+            position: relative;
+        }
+        nav ul > li > a {
+            display: block;
+            text-decoration: none;
+            color: #fff;
+            padding: 5px;
+            margin: 0 5px;
+        }
+        nav a:hover {
+            background-color: #666;
+            color: rgb(248, 161, 161);
+        }
+        .active {
+            color: rgb(250, 136, 136);
+        }
+        div {
+            position: relative;
+        }
+        @keyframes fadein_top {
+            0% {opacity: 0;}
+            100% {opacity: 1;}
+            from {top: -100px;}
+            to   {top: 0px;}
+        }
+        .ant_top {
+            animation: fadein_top 2s ease;
+        }
+        @keyframes fadein_bot {
+            0% {opacity: 0;}
+            100% {opacity: 1;}
+            from {bottom: -100px;}
+            to   {bottom: 0px;}
+        }
+        .ant_bot {
+            animation: fadein_bot 2s ease;
+        }
+        center {
+            font-family: 'cwTeXMing', 'Arial', serif;
+        }
+        /* 子選單樣式 */
+        .submenu {
+            display: none;
+            position: absolute;
+            background-color: #444;
+            box-shadow: 0px 2px 5px #666;
+            z-index: 1;
+        }
+        nav ul > li:hover .submenu {
+            display: block;
+        }
+        .submenu > li > a {
+            display: block;
+            padding: 5px 5px;
+            text-decoration: none;
+            color: #fff;
+        }
+        .submenu > li > a:hover {
+            background-color: #666;
+            color: rgb(248, 161, 161);
+        }
+    </style>
+    
+    <script>
+        $(document).ready(function(){
+            $('.tr_1_more').on("click",function(){
+                $('.tr_1_more').hide() ;
+                $('.tr_1').hide() ;
+                $('.tr_2').show() ;
+            })
+            $('.tr_1_more').show() ;
+            $('.tr_1').show() ;
+            $('.tr_2').hide() ;
+        })
+    </script>
+</head>
+
+<body>
+    <!-- 網站title -->
+    <center>
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tr>
+                <td class="styleNewsContentRight" align="center">
+                    <header>
+                        <h1>彼岸花；開彼岸。</h1>
+                    </header>
+                </td>
+            </tr>
+        </table>
+    </center>
+    <center>
+        <!-- 網址目錄 -->
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tr>
+                <td class="styleNewsContentRight" align="center">
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="./Home.html">Home</a>
+                            </li>
+                            <li>
+                                <a class="active" href="./Aboutus.html">About us</a>
+                                <ul class="submenu">
+                                    <li><a href="./Intro.html">Intro</a></li>
+                                    <li><a href="./Managers.html">Managers</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="./News.html">News</a>
+                            </li>
+                            <li>
+                                <a href="./Album.html">Album</a>
+                            </li>
+                            <li>
+                                <a href="./Login.html">Login</a>
+                            </li>
+                            <li>
+                                <a href="https://forum.gamer.com.tw/C.php?bsn=16583&snA=58352&tnum=747&subbsn=12" target="_blank">Join us</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </td>
+            </tr>
+        </table>
+    </center>
+    <!-- 分頁title -->
+    <center>
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tr>
+                <td class="styleNewsContentRight" align="center" valign="center">
+                    <h1><big><font color="black">ꕥINTROꕥ</h1></big></font>
+                </td>
+            </tr>
+        </table>
+    </center>   
+    <center>
+        <!-- 文字介紹 -->
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tbody>
+                <tr>
+                    <td colspan="2">
+                        <div>
+                            <img src="./index/Aboutus_NEW.JPG" style="display:block; margin:auto;" width="60%" />
+                        </div>
+                    </td>
+                <tr>    
+                    <td class="styleNewsContentRight" align="left" valign="top" width="500px">
+                        <div class="ant_bot">
+                            <p> <div align="center">《Intro》</div></p>
+                        </div>
+                        <div class="ant_top">
+                                <br>
+                                <br>
+                                <div align="center">「我們是遊戲橘子時期的New Life！」</div>
+                                <br>
+                                改名叫彼岸花取自於她的傳說及花語。
+                                <br>
+                                在廣大的網路世界裡我們相遇、相識然後相知相惜，
+                                <br>
+                                放不下對愛爾琳的思念更忘不了那群圍在營火、聚集在船上的人們。
+                                <br>
+                                <br>
+                                <div align="center">「公會定居Ch.42」</div>
+                                <br>
+                                我們最常做的事情就是聚在營火喇賽取暖，
+                                <br>
+                                大家都很熱情，有問題都歡迎舉手發問哦
+                                <br>
+                                <br>
+                                <div align="center">「屬於我們的彼岸花」</div>
+                                <br>
+                                不論是舊玩家或者是新朋友，
+                                <br>
+                                我們都誠摯的歡迎你加入，
+                                <br>
+                                對我們來說公會不僅僅只是一個公會更是一個家，
+                                <br>
+                                希望有意願加入的你能跟我們一樣愛我們的家。
+                                <br>
+                                <br>
+                                <div align="center">「加入我們的行列」</div>
+                                <br>
+                                本公會不限等級、K數、突破、追傷
+                                <br>
+                                但右邊幾點規則請玩家們仔細閱讀
+                            </div>
+                        </p>
+                    </td>
+                    <td class="styleNewsContentRight" align="left" valign="top" width="500px">
+                        <div class="ant_bot">
+                            <p> <div align="center">《入會規則》</div></p>
+                        </div>
+                        <div class="ant_top">
+                                <br>
+                                <br>
+                                1. 如果有事情超過15天無法上線請先寄信給管理員或者口頭告知 , 
+                                若無回應也麻煩寄信通知以確保管理員有收到訊息避免誤踢之情形 , 
+                                超過15天無故失蹤者將直接踢出公會
+                                <br>
+                                <br>
+                                2. 遊戲上想申請者請先洽詢會長或管理員或者寄信詢問 , 但以巴哈回覆為主
+                                <br>
+                                <br>
+                                3. 詢問事情時請注意基本尊重及禮貌 , 避免不必要的誤會
+                                <br>
+                                <br>
+                                4. 開玩笑沒關係但請注意分寸 , 情節嚴重者若提醒不予理會即口頭告知並踢出公會
+                                <br>
+                                <br>
+                                5. 開團時間目前不固定 , 如有需要歡迎告知管理員
+                                <br>
+                                <br>
+                                6. 本公會不歡迎幽靈所以請盡量與會員們喇賽 , 別害怕我們 , 我們有很多親善大使 
+                                <br>
+                                <br>
+                                7. 有困難或心情不好時也可以向管理員傾訴 , 我們非常樂意給予協助 
+                                <br>
+                                <br>
+                                8. 不定時舉辦活動 , 歡迎踴躍參與
+                                <br>
+                                <br>
+                                9. 請密切注意遊戲公告 , 會不定時更新
+                                <br>
+                                <br>
+                                10. 請注意自身帳號安全 , 相信會員們都不希望看見誰離開 
+                                <br>
+                                <br>
+                                11. 公倉前三頁+第四頁第一格的裝備是解稱號用 , 請勿亂動亂拿亂塞東西 , 解完任務請立刻歸還 , 勿做私人用途
+                                <br>
+                                <br>
+                                最後 , 我們誠心歡迎你的加入 <a href="https://forum.gamer.com.tw/C.php?bsn=16583&snA=58352&tnum=747&subbsn=12" target="_blank">Join us!</a>
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center>
+        <!-- 版權聲明 -->
+        <small>
+            <p>&copy; 2024 SweetTears。保留所有權利。</p>
+        </small>
+    </center>
+</body>
+
+
+</html>

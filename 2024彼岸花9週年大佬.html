@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<!-- 網站title與文字底色 -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2024彼岸花9週年大佬 / 彼岸花；開彼岸。</title>
+    <style>
+        @import url('https://fonts.googleapis.com/earlyaccess/cwtexming.css');
+        header {
+            background-color: #222;
+            color: rgba(199, 118, 131, 0.986);
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #444;
+            color: #fff;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 1px;
+            padding: 0px;
+        }
+        nav ul > li {
+            display: inline-block;
+            position: relative;
+        }
+        nav ul > li > a {
+            display: block;
+            text-decoration: none;
+            color: #fff;
+            padding: 5px;
+            margin: 0 5px;
+        }
+        nav a:hover {
+            background-color: #666;
+            color: rgb(248, 161, 161);
+        }
+        .active {
+            color: rgb(250, 136, 136);
+        }
+        div {
+            position: relative;
+        }
+        @keyframes fadein {
+            0% {opacity: 0;}
+            100% {opacity: 1;}
+            from {left: -100px;}
+            to   {left: 0px;}
+        }
+        .ant {
+            animation: fadein 1s ease;
+        }
+        center {
+            font-family: 'cwTeXMing', 'Arial', serif;
+        }
+        /* 子選單樣式 */
+        .submenu {
+            display: none;
+            position: absolute;
+            background-color: #444;
+            box-shadow: 0px 2px 5px #666;
+            z-index: 1;
+        }
+        nav ul > li:hover .submenu {
+            display: block;
+        }
+        .submenu > li > a {
+            display: block;
+            padding: 5px 5px;
+            text-decoration: none;
+            color: #fff;
+        }
+        .submenu > li > a:hover {
+            background-color: #666;
+            color: rgb(248, 161, 161);
+        }
+    </style>
+    
+    <script>
+        $(document).ready(function(){
+            $('.tr_1_more').on("click",function(){
+                $('.tr_1_more').hide() ;
+                $('.tr_1').hide() ;
+                $('.tr_2').show() ;
+            })
+            $('.tr_1_more').show() ;
+            $('.tr_1').show() ;
+            $('.tr_2').hide() ;
+        })
+    </script>
+</head>
+
+<body>
+    <!-- 網站title -->
+    <center>
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tr>
+                <td class="styleNewsContentRight" align="center">
+                    <header>
+                        <h1>彼岸花；開彼岸。</h1>
+                    </header>
+                </td>
+            </tr>
+        </table>
+    </center>
+    <center>
+        <!-- 網址目錄 -->
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tr>
+                <td class="styleNewsContentRight" align="center">
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="./Home.html">Home</a>
+                            </li>
+                            <li>
+                                <a href="./Aboutus.html">About us</a>
+                                <ul class="submenu">
+                                    <li><a href="./Intro.html">Intro</a></li>
+                                    <li><a href="./Managers.html">Managers</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="active" href="./News.html">News</a>
+                            </li>
+                            <li>
+                                <a href="./Album.html">Album</a>
+                            </li>
+                            <li>
+                                <a href="./Login.html">Login</a>
+                            </li>
+                            <li>
+                                <a href="https://forum.gamer.com.tw/C.php?bsn=16583&snA=58352&tnum=747&subbsn=12" target="_blank">Join us</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </td>
+            </tr>
+        </table>
+    <center>
+        <!-- 文字介紹 -->
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tbody>
+                <tr>
+                    <td colspan="2">
+                        <div class="ant">
+                            <p>
+                                活動四: 好多大佬...嗎
+                                <br>
+                                <br>
+                                時間: 8/17 0:00~ 8/25中午12點以前
+                                <br>
+                                活動內容:
+                                <br>
+                                -活動期間內, 可從公會組團一起打任一絕命
+                                <br>
+                                -防具必須全脫, 僅留下武器、輔助裝備、技能道具、雙戒指
+                                <br>
+                                -需派代表上傳截圖到DC
+                                <br>
+                                -截圖基本兩張, 出船合照和結算合照, 船長+全部船員即獲得參加獎, 通關團隊全員+通關獎
+                                <br>
+                                -8/25晚上8點會從抽獎名單中抽出數位獲獎人
+                                <br>
+                                -獎金不會因參加次數越多而重複計算
+                                <br>
+                                <br>
+                                活動獎勵:
+                                <br>
+                                參加獎 400W, 通關+200W, 輸出前四+200W, 輸出第一和第二+200W, 輸出超過20%+200W
+                                <br>
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+    <center>
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tbody>
+                <tr>
+                    <td colspan="2">
+                        <div class="ant">
+                            <p align="center">
+                                <big>參予人員與得獎名單</big>
+                                <br>
+                                <img src="./index/9th/大老.png" alt="9th_大佬" width="600"/>
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+    <br>
+    <br>
+    <br>
+    <center>
+        <p>
+            <a href="./News.html">Back</a>
+        </p>
+    </center>
+    <!-- 留言功能區域 -->
+    <center>
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tbody>
+                <tr>
+                    <td colspan="2" width="900px">
+                        <div class="ant">
+                            <p>
+                                <big><big><font color="pink">💬 活動留言討論區</font></big></big>
+                                <br>
+                                <br>
+                                <div id="commentSection">
+                                    <!-- 留言表單 -->
+                                    <div id="commentForm" style="display: none;">
+                                        <textarea id="commentText" placeholder="請輸入您的留言..." style="width: 100%; height: 100px; padding: 10px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; margin-bottom: 15px; resize: vertical;"></textarea>
+                                        <br>
+                                        <button onclick="submitComment()" style="background-color: rgba(199, 118, 131, 0.986); color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">發表留言</button>
+                                    </div>
+                                    
+                                    <!-- 未登入提示 -->
+                                    <div id="loginPrompt" style="text-align: center; padding: 20px; background-color: #f0f0f0; border-radius: 8px; margin-bottom: 20px;">
+                                        <p style="color: #666; margin: 0;">🔒 只有已登入的成員才能留言</p>
+                                        <a href="./Login.html" style="color: rgba(199, 118, 131, 0.986); text-decoration: none; font-weight: bold;">點此登入</a>
+                                    </div>
+                                    
+                                    <!-- 留言顯示區域 -->
+                                    <div id="commentsDisplay" style="margin-top: 20px;">
+                                        <div id="noComments" style="text-align: center; color: #999; font-style: italic; padding: 20px;">
+                                            目前還沒有留言
+                                        </div>
+                                    </div>
+                                </div>
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+    
+    <br>
+    <br>
+    <br>
+    <center>
+        <!-- 版權聲明 -->
+        <small>
+            <p>&copy; 2024 SweetTears。保留所有權利。</p>
+        </small>
+    </center>
+
+    <script>
+        // 檢查登入狀態並顯示對應的留言功能
+        function checkLoginStatus() {
+            const savedUser = localStorage.getItem('currentUser');
+            const savedAdmin = localStorage.getItem('isAdmin') === 'true';
+            
+            if (savedUser && !savedAdmin) {
+                // 已登入且非管理員，顯示留言表單
+                document.getElementById('commentForm').style.display = 'block';
+                document.getElementById('loginPrompt').style.display = 'none';
+                loadComments();
+            } else {
+                // 未登入或管理員，顯示登入提示
+                document.getElementById('commentForm').style.display = 'none';
+                document.getElementById('loginPrompt').style.display = 'block';
+                loadComments(); // 仍然載入留言供瀏覽
+            }
+        }
+        
+        // 載入留言
+        function loadComments() {
+            const comments = JSON.parse(localStorage.getItem('bossComments') || '[]');
+            const commentsDisplay = document.getElementById('commentsDisplay');
+            
+            if (comments.length === 0) {
+                document.getElementById('noComments').style.display = 'block';
+                return;
+            }
+            
+            document.getElementById('noComments').style.display = 'none';
+            commentsDisplay.innerHTML = comments.map(comment => `
+                <div style="background-color: #f9f9f9; padding: 15px; margin-bottom: 15px; border-radius: 8px; border-left: 4px solid rgba(199, 118, 131, 0.986);">
+                    <div style="font-weight: bold; color: rgba(199, 118, 131, 0.986); margin-bottom: 8px;">
+                        ${escapeHtml(comment.user)} 
+                        <span style="font-size: 12px; color: #999; font-weight: normal;">${comment.timestamp}</span>
+                    </div>
+                    <div style="color: #333; line-height: 1.5;">${escapeHtml(comment.text)}</div>
+                </div>
+            `).join('');
+        }
+        
+        // 提交留言
+        function submitComment() {
+            const commentText = document.getElementById('commentText').value.trim();
+            const savedUser = localStorage.getItem('currentUser');
+            const savedAdmin = localStorage.getItem('isAdmin') === 'true';
+            
+            if (!commentText) {
+                alert('請輸入留言內容！');
+                return;
+            }
+            
+            if (!savedUser) {
+                alert('請先登入！');
+                return;
+            }
+            
+            if (savedAdmin) {
+                alert('管理員無法發表留言！');
+                return;
+            }
+            
+            const comments = JSON.parse(localStorage.getItem('bossComments') || '[]');
+            const newComment = {
+                user: savedUser,
+                text: commentText,
+                timestamp: new Date().toLocaleString('zh-TW')
+            };
+            
+            comments.unshift(newComment); // 新留言放在最前面
+            localStorage.setItem('bossComments', JSON.stringify(comments));
+            
+            document.getElementById('commentText').value = '';
+            loadComments();
+        }
+        
+        // HTML 轉義函數
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        // 頁面載入時檢查登入狀態
+        document.addEventListener('DOMContentLoaded', checkLoginStatus);
+    </script>
+</body>
+
+
+</html>

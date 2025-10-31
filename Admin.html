@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理員審核 / 彼岸花；開彼岸。</title>
+    <style>
+        @import url('https://fonts.googleapis.com/earlyaccess/cwtexming.css');
+        body {
+            font-family: 'cwTeXMing', 'Arial', serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        .admin-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        h1 {
+            color: rgba(199, 118, 131, 0.986);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .section h3 {
+            color: #333;
+            margin-top: 0;
+        }
+        .member-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .member-card {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #e0e0e0;
+            text-align: center;
+        }
+        .member-name {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .member-actions {
+            display: flex;
+            gap: 5px;
+            justify-content: center;
+        }
+        .btn {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .btn-approve {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .btn-reject {
+            background-color: #f44336;
+            color: white;
+        }
+        .btn-remove {
+            background-color: #ff9800;
+            color: white;
+        }
+        .btn:hover {
+            opacity: 0.8;
+        }
+        .stats {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .stat-card {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            flex: 1;
+        }
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1976d2;
+        }
+        .stat-label {
+            color: #666;
+            font-size: 14px;
+        }
+        .no-members {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            padding: 20px;
+        }
+        /* 導航欄樣式 */
+        .navbar {
+            background-color: #444;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 10px 0;
+        }
+        .navbar ul > li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+        .navbar ul > li > a {
+            display: block;
+            text-decoration: none;
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .navbar a:hover {
+            background-color: #666;
+            color: rgb(248, 161, 161);
+        }
+        .navbar .active {
+            color: rgb(250, 136, 136);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 導航欄 -->
+    <div class="navbar">
+        <ul>
+            <li><a href="./Home.html">Home</a></li>
+        </ul>
+    </div>
+
+    <div class="admin-container">
+        <h1>🏛️ 公會管理員審核中心</h1>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number" id="pendingCount">0</div>
+                <div class="stat-label">待審核申請</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="approvedCount">0</div>
+                <div class="stat-label">已審核成員</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="guestCount">0</div>
+                <div class="stat-label">註冊訪客</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="commentCount">0</div>
+                <div class="stat-label">總留言數</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>⏳ 待審核申請</h3>
+            <div id="pendingMembers" class="member-list">
+                <div class="no-members">目前沒有待審核的申請</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>✅ 已審核成員</h3>
+            <div id="approvedMembers" class="member-list">
+                <div class="no-members">目前沒有已審核的成員</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>👤 註冊訪客</h3>
+            <div id="guestMembers" class="member-list">
+                <div class="no-members">目前沒有註冊的訪客</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>💬 留言管理</h3>
+            <div style="margin-bottom: 20px;">
+                <button onclick="loadAllComments()" class="btn btn-approve" style="margin-right: 10px;">刷新留言</button>
+                <button onclick="clearAllComments()" class="btn btn-remove">清空所有留言</button>
+            </div>
+            <div id="commentsManagement" class="member-list">
+                <div class="no-members">點擊「刷新留言」載入所有活動留言</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 載入所有數據
+        function loadAllData() {
+            loadPendingMembers();
+            loadApprovedMembers();
+            loadGuestMembers();
+            updateStats();
+        }
+        
+        // 載入待審核成員
+        function loadPendingMembers() {
+            const pendingMembers = JSON.parse(localStorage.getItem('pendingMembers') || '[]');
+            const container = document.getElementById('pendingMembers');
+            
+            if (pendingMembers.length === 0) {
+                container.innerHTML = '<div class="no-members">目前沒有待審核的申請</div>';
+                return;
+            }
+            
+            container.innerHTML = pendingMembers.map(member => `
+                <div class="member-card">
+                    <div class="member-name">${escapeHtml(member)}</div>
+                    <div class="member-actions">
+                        <button class="btn btn-approve" onclick="approveMember('${escapeHtml(member)}')">通過</button>
+                        <button class="btn btn-reject" onclick="rejectMember('${escapeHtml(member)}')">拒絕</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        // 載入已審核成員
+        function loadApprovedMembers() {
+            const approvedMembers = JSON.parse(localStorage.getItem('registeredMembers') || '[]');
+            const container = document.getElementById('approvedMembers');
+            
+            if (approvedMembers.length === 0) {
+                container.innerHTML = '<div class="no-members">目前沒有已審核的成員</div>';
+                return;
+            }
+            
+            container.innerHTML = approvedMembers.map(member => `
+                <div class="member-card">
+                    <div class="member-name">${escapeHtml(member)}</div>
+                    <div class="member-actions">
+                        <button class="btn btn-remove" onclick="removeMember('${escapeHtml(member)}')">移除</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        // 載入訪客成員
+        function loadGuestMembers() {
+            const guestMembers = JSON.parse(localStorage.getItem('guestbookMembers') || '[]');
+            const container = document.getElementById('guestMembers');
+            
+            if (guestMembers.length === 0) {
+                container.innerHTML = '<div class="no-members">目前沒有註冊的訪客</div>';
+                return;
+            }
+            
+            container.innerHTML = guestMembers.map(member => `
+                <div class="member-card">
+                    <div class="member-name">${escapeHtml(member)}</div>
+                    <div class="member-actions">
+                        <button class="btn btn-approve" onclick="promoteGuest('${escapeHtml(member)}')">提升為成員</button>
+                        <button class="btn btn-remove" onclick="removeGuest('${escapeHtml(member)}')">移除</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        // 更新統計數據
+        function updateStats() {
+            const pendingMembers = JSON.parse(localStorage.getItem('pendingMembers') || '[]');
+            const approvedMembers = JSON.parse(localStorage.getItem('registeredMembers') || '[]');
+            const guestMembers = JSON.parse(localStorage.getItem('guestbookMembers') || '[]');
+            
+            document.getElementById('pendingCount').textContent = pendingMembers.length;
+            document.getElementById('approvedCount').textContent = approvedMembers.length;
+            document.getElementById('guestCount').textContent = guestMembers.length;
+            
+            // 計算總留言數
+            const totalComments = getAllCommentsCount();
+            document.getElementById('commentCount').textContent = totalComments;
+        }
+        
+        // 獲取所有留言的總數
+        function getAllCommentsCount() {
+            const commentKeys = [
+                'sakuraComments', 'anniversary9Comments', 'gamblingComments', 'qaComments', 
+                'recruitComments', 'bossComments', 'gambling6Comments', 'qa6Comments', 
+                'lottery6Comments', 'minecart6Comments', 'forget2020Comments', 
+                'anniversary7Comments', 'spring2022Comments', 'christmas2021Comments', 
+                'anniversary4Comments', 'award4Comments', 'forget2020_1Comments', 
+                'forget2020_2Comments', 'forget2020_3Comments'
+            ];
+            
+            let totalCount = 0;
+            commentKeys.forEach(key => {
+                const comments = JSON.parse(localStorage.getItem(key) || '[]');
+                totalCount += comments.length;
+            });
+            return totalCount;
+        }
+        
+        // 載入所有留言
+        function loadAllComments() {
+            const commentKeys = [
+                {key: 'sakuraComments', name: '2024薩溫節'},
+                {key: 'anniversary9Comments', name: '2024九週年活動公告'},
+                {key: 'gamblingComments', name: '2024九週年賭船'},
+                {key: 'qaComments', name: '2024九週年QA問答'},
+                {key: 'recruitComments', name: '2024九週年新兵'},
+                {key: 'bossComments', name: '2024九週年大佬'},
+                {key: 'gambling6Comments', name: '2021六週年賭船'},
+                {key: 'qa6Comments', name: '2021六週年QA問答'},
+                {key: 'lottery6Comments', name: '2021六週年抽獎'},
+                {key: 'minecart6Comments', name: '2021六週年礦車'},
+                {key: 'forget2020Comments', name: '2020忘年活動公告'},
+                {key: 'anniversary7Comments', name: '七週年活動'},
+                {key: 'spring2022Comments', name: '2022春季活動'},
+                {key: 'christmas2021Comments', name: '2021聖誕活動'},
+                {key: 'anniversary4Comments', name: '2019四週年活動'},
+                {key: 'award4Comments', name: '2019四週年得獎'},
+                {key: 'forget2020_1Comments', name: '2020忘年活動一'},
+                {key: 'forget2020_2Comments', name: '2020忘年活動二'},
+                {key: 'forget2020_3Comments', name: '2020忘年活動三'}
+            ];
+            
+            const container = document.getElementById('commentsManagement');
+            let allComments = [];
+            
+            // 收集所有留言
+            commentKeys.forEach(item => {
+                const comments = JSON.parse(localStorage.getItem(item.key) || '[]');
+                comments.forEach(comment => {
+                    allComments.push({
+                        ...comment,
+                        activityName: item.name,
+                        storageKey: item.key
+                    });
+                });
+            });
+            
+            // 按時間排序（最新的在前）
+            allComments.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            
+            if (allComments.length === 0) {
+                container.innerHTML = '<div class="no-members">目前沒有任何留言</div>';
+                return;
+            }
+            
+            container.innerHTML = allComments.map(comment => `
+                <div class="member-card" style="margin-bottom: 15px;">
+                    <div style="font-weight: bold; color: #333; margin-bottom: 8px;">
+                        ${escapeHtml(comment.user)} 
+                        <span style="font-size: 12px; color: #999; font-weight: normal;">${comment.timestamp}</span>
+                    </div>
+                    <div style="color: #666; font-size: 12px; margin-bottom: 8px;">
+                        活動：${escapeHtml(comment.activityName)}
+                    </div>
+                    <div style="color: #333; line-height: 1.5; margin-bottom: 10px; padding: 10px; background-color: #f9f9f9; border-radius: 5px;">
+                        ${escapeHtml(comment.text)}
+                    </div>
+                    <div class="member-actions">
+                        <button class="btn btn-remove" onclick="deleteComment('${comment.storageKey}', '${escapeHtml(comment.user)}', '${escapeHtml(comment.timestamp)}')">刪除</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        // 刪除單個留言
+        function deleteComment(storageKey, userName, timestamp) {
+            if (confirm(`確定要刪除 ${userName} 在 ${timestamp} 的留言嗎？`)) {
+                const comments = JSON.parse(localStorage.getItem(storageKey) || '[]');
+                const updatedComments = comments.filter(comment => 
+                    !(comment.user === userName && comment.timestamp === timestamp)
+                );
+                localStorage.setItem(storageKey, JSON.stringify(updatedComments));
+                
+                // 重新載入留言
+                loadAllComments();
+                updateStats();
+                alert('留言已刪除！');
+            }
+        }
+        
+        // 清空所有留言
+        function clearAllComments() {
+            if (confirm('確定要清空所有活動的留言嗎？此操作無法復原！')) {
+                const commentKeys = [
+                    'sakuraComments', 'anniversary9Comments', 'gamblingComments', 'qaComments', 
+                    'recruitComments', 'bossComments', 'gambling6Comments', 'qa6Comments', 
+                    'lottery6Comments', 'minecart6Comments', 'forget2020Comments', 
+                    'anniversary7Comments', 'spring2022Comments', 'christmas2021Comments', 
+                    'anniversary4Comments', 'award4Comments', 'forget2020_1Comments', 
+                    'forget2020_2Comments', 'forget2020_3Comments'
+                ];
+                
+                commentKeys.forEach(key => {
+                    localStorage.setItem(key, JSON.stringify([]));
+                });
+                
+                loadAllComments();
+                updateStats();
+                alert('所有留言已清空！');
+            }
+        }
+        
+        // 通過成員申請
+        function approveMember(memberName) {
+            if (confirm(`確定要通過 ${memberName} 的申請嗎？`)) {
+                // 從待審核名單移除
+                const pendingMembers = JSON.parse(localStorage.getItem('pendingMembers') || '[]');
+                const updatedPending = pendingMembers.filter(name => name !== memberName);
+                localStorage.setItem('pendingMembers', JSON.stringify(updatedPending));
+                
+                // 加入已審核名單
+                const approvedMembers = JSON.parse(localStorage.getItem('registeredMembers') || '[]');
+                if (!approvedMembers.includes(memberName)) {
+                    approvedMembers.push(memberName);
+                    localStorage.setItem('registeredMembers', JSON.stringify(approvedMembers));
+                }
+                
+                // 重新載入數據
+                loadAllData();
+                alert(`${memberName} 的申請已通過！`);
+            }
+        }
+        
+        // 拒絕成員申請
+        function rejectMember(memberName) {
+            if (confirm(`確定要拒絕 ${memberName} 的申請嗎？`)) {
+                // 從待審核名單移除
+                const pendingMembers = JSON.parse(localStorage.getItem('pendingMembers') || '[]');
+                const updatedPending = pendingMembers.filter(name => name !== memberName);
+                localStorage.setItem('pendingMembers', JSON.stringify(updatedPending));
+                
+                // 重新載入數據
+                loadAllData();
+                alert(`${memberName} 的申請已拒絕！`);
+            }
+        }
+        
+        // 移除成員
+        function removeMember(memberName) {
+            if (confirm(`確定要移除 ${memberName} 的成員資格嗎？`)) {
+                // 從已審核名單移除
+                const approvedMembers = JSON.parse(localStorage.getItem('registeredMembers') || '[]');
+                const updatedApproved = approvedMembers.filter(name => name !== memberName);
+                localStorage.setItem('registeredMembers', JSON.stringify(updatedApproved));
+                
+                // 重新載入數據
+                loadAllData();
+                alert(`${memberName} 的成員資格已移除！`);
+            }
+        }
+        
+        // 提升訪客為成員
+        function promoteGuest(guestName) {
+            if (confirm(`確定要將 ${guestName} 提升為公會成員嗎？`)) {
+                // 從訪客名單移除
+                const guestMembers = JSON.parse(localStorage.getItem('guestbookMembers') || '[]');
+                const updatedGuests = guestMembers.filter(name => name !== guestName);
+                localStorage.setItem('guestbookMembers', JSON.stringify(updatedGuests));
+                
+                // 加入已審核成員名單
+                const approvedMembers = JSON.parse(localStorage.getItem('registeredMembers') || '[]');
+                if (!approvedMembers.includes(guestName)) {
+                    approvedMembers.push(guestName);
+                    localStorage.setItem('registeredMembers', JSON.stringify(approvedMembers));
+                }
+                
+                // 重新載入數據
+                loadAllData();
+                alert(`${guestName} 已提升為公會成員！`);
+            }
+        }
+        
+        // 移除訪客
+        function removeGuest(guestName) {
+            if (confirm(`確定要移除 ${guestName} 的訪客資格嗎？`)) {
+                // 從訪客名單移除
+                const guestMembers = JSON.parse(localStorage.getItem('guestbookMembers') || '[]');
+                const updatedGuests = guestMembers.filter(name => name !== guestName);
+                localStorage.setItem('guestbookMembers', JSON.stringify(updatedGuests));
+                
+                // 重新載入數據
+                loadAllData();
+                alert(`${guestName} 的訪客資格已移除！`);
+            }
+        }
+        
+        // HTML 轉義函數
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        // 頁面載入時載入所有數據
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAllData();
+        });
+    </script>
+</body>
+
+</html>

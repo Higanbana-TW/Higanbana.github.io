@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<!-- 網站title與文字底色 -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News / 彼岸花；開彼岸。</title>
+    <style>
+        @import url('https://fonts.googleapis.com/earlyaccess/cwtexming.css');
+        header {
+            background-color: #222;
+            color: rgba(199, 118, 131, 0.986);
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #444;
+            color: #fff;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 1px;
+            padding: 0px;
+        }
+        nav ul > li {
+            display: inline-block;
+            position: relative;
+        }
+        nav ul > li > a {
+            display: block;
+            text-decoration: none;
+            color: #fff;
+            padding: 5px;
+            margin: 0 5px;
+        }
+        nav a:hover {
+            background-color: #666;
+            color: rgb(248, 161, 161);
+        }
+        .active {
+            color: rgb(250, 136, 136);
+        }
+        div {
+            position: relative;
+        }
+        @keyframes fadein {
+            0% {opacity: 0;}
+            100% {opacity: 1;}
+        }
+        .ant {
+            animation: fadein 2s ease;
+        }
+        center {
+            font-family: 'cwTeXMing', 'Arial', serif;
+        }
+        p {
+            background-image: url("./index/Morrigan_Cichol_transmission.png");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        P:hover {
+            background-image: url("./index/Morrigan_Cichol_color.png");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        /* 子選單樣式 */
+        .submenu {
+            display: none;
+            position: absolute;
+            background-color: #444;
+            box-shadow: 0px 2px 5px #666;
+            z-index: 1;
+        }
+        nav ul > li:hover .submenu {
+            display: block;
+        }
+        .submenu > li > a {
+            display: block;
+            padding: 5px 5px;
+            text-decoration: none;
+            color: #fff;
+        }
+        .submenu > li > a:hover {
+            background-color: #666;
+            color: rgb(248, 161, 161);
+        }
+        /* 方塊樣式 */
+        .pics {
+            position:relative;
+        }
+        .pics img { 
+            position:absolute;
+            /* 淡出淡入效果2秒 */
+            -webkit-transition: opacity 300ms ease-in-out;
+            -moz-transition: opacity 300ms ease-in-out;
+            -o-transition: opacity 300ms ease-in-out;
+            transition: opacity 300ms ease-in-out;
+        }
+        .pics img:last-child:hover {
+        /* 滑入時第一張透明度設0 */
+            opacity:0;
+        }
+    </style>
+    
+    <script>
+        $(document).ready(function(){
+            $('.tr_1_more').on("click",function(){
+                $('.tr_1_more').hide() ;
+                $('.tr_1').hide() ;
+                $('.tr_2').show() ;
+            })
+            $('.tr_1_more').show() ;
+            $('.tr_1').show() ;
+            $('.tr_2').hide() ;
+        })
+    </script>
+</head>
+
+<body>
+    <!-- 網站title -->
+    <center>
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tr>
+                <td class="styleNewsContentRight" align="center">
+                    <header>
+                        <h1>彼岸花；開彼岸。</h1>
+                    </header>
+                </td>
+            </tr>
+        </table>
+    </center>
+    <center>
+        <!-- 網址目錄 -->
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tr>
+                <td class="styleNewsContentRight" align="center">
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="./Home.html">Home</a>
+                            </li>
+                            <li>
+                                <a href="./Aboutus.html">About us</a>
+                                <ul class="submenu">
+                                    <li><a href="./Intro.html">Intro</a></li>
+                                    <li><a href="./Managers.html">Managers</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="active" href="./News.html">News</a>
+                            </li>
+                            <li>
+                                <a href="./Album.html">Album</a>
+                            </li>
+                            <li>
+                                <a href="./Login.html">Login</a>
+                            </li>
+                            <li>
+                                <a href="https://forum.gamer.com.tw/C.php?bsn=16583&snA=58352&tnum=747&subbsn=12" target="_blank">Join us</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </td>
+            </tr>
+        </table>
+    </center>
+    <!-- 分頁title -->
+    <center>
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tr>
+                <td class="styleNewsContentRight" align="center" valign="center">
+                    <h1><big><font color="black">ꕥNEWSꕥ</h1></big></font>
+                </td>
+            </tr>
+        </table>
+    </center>    
+    <center>
+        <!-- New內容 -->
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 5px 0px" width="1080">
+            <tbody>
+                <tr>
+                    <td colspan="2" width="900" height="150">
+                        <div class="ant">
+                            <p>
+                                <big><big><font color="pink">彼岸花7周年線上活動結束</font></big></big>
+                                <br>
+                                <br>
+                                Aug. 28, 2022
+                                <br>
+                                <br>
+                                公會7周年活動已圓滿落幕, 感謝各位成員的參予, 各項活動得獎名單請參閱以下連結。
+                                <br>
+                                <a href="./彼岸花7周年線上活動.html">詳細資訊</a>
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="900" height="150">
+                        <div class="ant">
+                            <p>
+                                <big><big><font color="pink">彼岸花7周年線上活動預告</font></big></big>
+                                <br>
+                                <br>
+                                Jul. 30, 2022
+                                <br>
+                                <br>
+                                8/20~28將舉辦公會7周年活動, 參加皆有獎, 各活動詳細如下, 屆時請各位多多參予喔。
+                                <br>
+                                <a href="./彼岸花7周年線上活動.html">詳細資訊</a>
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="900px" height="150px">
+                        <div class="ant">
+                            <p>
+                                <big><big><font color="pink">彼岸花網頁搬家囉!</font></big></big>
+                                <br>
+                                <br>
+                                May 15, 2024
+                                <br>
+                                <br>
+                                由於原本的網頁容量爆滿，因此改到這個地方喔，歡迎參觀。
+                                <br>
+                                <br>
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="900" height="150">
+                        <div class="ant">
+                            <p>
+                                <big><big><font color="pink">2022​彼岸花春季線上活動結束</font></big></big>
+                                <br>
+                                <br>
+                                Apr. 23, 2022
+                                <br>
+                                <br>
+                                感謝各位參與活動，下次活動還請各位多多參與喔。
+                                <br>
+                                <a href="./2022​彼岸花春季線上活動.html">詳細資訊</a>
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="900" height="150">
+                        <div class="ant">
+                            <p>
+                                <big><big><font color="pink">2022​彼岸花春季線上活動</font></big></big>
+                                <br>
+                                <br>
+                                Apr. 17, 2022
+                                <br>
+                                <br>
+                                4/23晚上公會會舉辦問答小活動，取前三和參加獎，有興趣成員請留意時間喔。
+                                <br>
+                                <a href="./2022​彼岸花春季線上活動.html">詳細資訊</a>
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="styleNewsContentRight" align="center" valign="center" >
+                        <a href="./News-P5.html">1</a>
+                        <a href="./News-P2.html">2</a>
+                        <a href="./News-P3.html">3</a>
+                        <a href="./News-P4.html">4</a>
+                        <a class="active" href="./News-P5.html">5</a>
+                        <a href="./News.html">6</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center>
+        <!-- 版權聲明 -->
+        <small>
+            &copy; 2024 SweetTears。保留所有權利。
+        </small>
+    </center>
+</body>
+
+
+</html>

@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<!-- 網站title與文字底色 -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成員登入 / 彼岸花；開彼岸。</title>
+    <style>
+        @import url('https://fonts.googleapis.com/earlyaccess/cwtexming.css');
+        header {
+            background-color: #222;
+            color: rgba(199, 118, 131, 0.986);
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #444;
+            color: #fff;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 1px;
+            padding: 0px;
+        }
+        nav ul > li {
+            display: inline-block;
+            position: relative;
+        }
+        nav ul > li > a {
+            display: block;
+            text-decoration: none;
+            color: #fff;
+            padding: 5px;
+            margin: 0 5px;
+        }
+        nav a:hover {
+            background-color: #666;
+            color: rgb(248, 161, 161);
+        }
+        .active {
+            color: rgb(250, 136, 136);
+        }
+        div {
+            position: relative;
+        }
+        @keyframes fadein {
+            0% {opacity: 0;}
+            100% {opacity: 1;}
+        }
+        .ant {
+            animation: fadein 2s ease;
+        }
+        center {
+            font-family: 'cwTeXMing', 'Arial', serif;
+        }
+        /* 子選單樣式 */
+        .submenu {
+            display: none;
+            position: absolute;
+            background-color: #444;
+            box-shadow: 0px 2px 5px #666;
+            z-index: 1;
+        }
+        nav ul > li:hover .submenu {
+            display: block;
+        }
+        .submenu > li > a {
+            display: block;
+            padding: 5px 5px;
+            text-decoration: none;
+            color: #fff;
+        }
+        .submenu > li > a:hover {
+            background-color: #666;
+            color: rgb(248, 161, 161);
+        }
+        
+        /* 留言板樣式 */
+        .guestbook-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .guestbook-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: 'cwTeXMing', 'Arial', serif;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: rgba(199, 118, 131, 0.986);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: 'cwTeXMing', 'Arial', serif;
+        }
+        
+        .submit-btn:hover {
+            background-color: rgb(248, 161, 161);
+        }
+        
+        .guestbook-messages {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .message {
+            border-bottom: 1px solid #eee;
+            padding: 15px 0;
+            margin-bottom: 15px;
+        }
+        
+        .message:last-child {
+            border-bottom: none;
+        }
+        
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .message-name {
+            font-weight: bold;
+            color: rgba(199, 118, 131, 0.986);
+            font-size: 16px;
+        }
+        
+        .message-date {
+            color: #666;
+            font-size: 12px;
+        }
+        
+        .message-content {
+            color: #333;
+            line-height: 1.5;
+            white-space: pre-wrap;
+        }
+        
+        .no-messages {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            padding: 40px;
+        }
+        
+        .clear-btn {
+            background-color: #666;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        .clear-btn:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 網站title -->
+    <center>
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tr>
+                <td class="styleNewsContentRight" align="center">
+                    <header>
+                        <h1>彼岸花；開彼岸。</h1>
+                    </header>
+                </td>
+            </tr>
+        </table>
+    </center>
+    <center>
+        <!-- 網址目錄 -->
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tr>
+                <td class="styleNewsContentRight" align="center">
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="./Home.html">Home</a>
+                            </li>
+                            <li>
+                                <a href="./Aboutus.html">About us</a>
+                                <ul class="submenu">
+                                    <li><a href="./Intro.html">Intro</a></li>
+                                    <li><a href="./Managers.html">Managers</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="./News.html">News</a>
+                            </li>
+                            <li>
+                                <a href="./Album.html">Album</a>
+                            </li>
+                            <li>
+                                <a class="active" href="./Login.html">Login</a>
+                            </li>
+                            <li>
+                                <a href="https://forum.gamer.com.tw/C.php?bsn=16583&snA=58352&tnum=747&subbsn=12" target="_blank">Join us</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </td>
+            </tr>
+        </table>
+    </center>
+    
+    <!-- 分頁title -->
+    <center>
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tr>
+                <td class="styleNewsContentRight" align="center" valign="center">
+                    <h1><big><font color="black">ꕥ成員登入ꕥ</h1></big></font>
+                </td>
+            </tr>
+        </table>
+    </center>
+    
+    <!-- 登入/註冊頁面內容 -->
+    <div class="guestbook-container">
+        <div class="guestbook-form">
+            <h3>🏛️ 彼岸花公會 - 成員登入</h3>
+            
+            <!-- 登入/註冊區域 -->
+            <div id="authSection" style="padding: 30px; background-color: #f0f0f0; border-radius: 10px; text-align: center;">
+                <h4>請輸入遊戲ID</h4>
+                <div style="margin: 20px 0;">
+                    <input type="text" id="memberName" placeholder="請輸入您的名稱" maxlength="20" style="width: 80%; max-width: 400px; padding: 15px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; margin-bottom: 20px;">
+                </div>
+                <div style="display: flex; gap: 15px; justify-content: center; margin-bottom: 20px; flex-wrap: wrap;">
+                    <button onclick="loginMember()" class="submit-btn" style="padding: 15px 30px; font-size: 16px; min-width: 120px;">成員登入</button>
+                    <button onclick="registerMember()" class="submit-btn" style="padding: 15px 30px; font-size: 16px; background-color: #666; min-width: 120px;">註冊</button>
+                    <button onclick="adminLogin()" class="submit-btn" style="padding: 15px 30px; font-size: 16px; background-color: #d32f2f; min-width: 120px;">🏛️ 管理員</button>
+                </div>
+                <div id="memberStatus" style="color: #666; font-size: 16px; margin-bottom: 15px;">
+                    目前狀態：未登入
+                </div>
+                <div style="color: #888; font-size: 14px; line-height: 1.5;">
+                    <p>💡 <strong>公會成員</strong>：訪客註冊後，需管理員審核身分，通過後即可留言</p>
+                    <p>🏛️ <strong>管理員</strong>：可進行用戶審核和系統管理</p>
+                </div>
+            </div>
+            
+            <!-- 成員狀態頁面 -->
+            <div id="memberStatusSection" style="display: none; padding: 30px; background-color: #e8f5e8; border-radius: 10px; text-align: center; margin-top: 20px;">
+                <h4 style="color: #4CAF50;">👤 成員狀態</h4>
+                <div style="background-color: white; padding: 20px; border-radius: 8px; margin: 20px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    <p style="font-size: 18px; margin: 10px 0; color: #333;">
+                        <strong>成員ID：</strong><span id="memberIdDisplay" style="color: rgba(199, 118, 131, 0.986); font-size: 20px;"></span>
+                    </p>
+                    <p id="memberTypeDisplay" style="font-size: 16px; margin: 10px 0; color: #666;"></p>
+                </div>
+                <div style="display: flex; gap: 15px; justify-content: center; margin-top: 20px; flex-wrap: wrap;">
+                    <a href="./Home.html" class="submit-btn" style="padding: 12px 25px; text-decoration: none; display: inline-block; background-color: #666;">返回首頁</a>
+                    <button onclick="logout()" class="submit-btn" style="padding: 12px 25px; background-color: #6c757d;">登出</button>
+                </div>
+            </div>
+            
+            <!-- 管理員專區 -->
+            <div id="adminStatusSection" style="display: none; padding: 30px; background-color: #fff3cd; border-radius: 10px; text-align: center; margin-top: 20px; border: 2px solid #ffc107;">
+                <h4 style="color: #856404;">🏛️ 管理員狀態</h4>
+                <div style="background-color: white; padding: 20px; border-radius: 8px; margin: 20px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    <p style="font-size: 18px; margin: 10px 0; color: #333;">
+                        <strong>管理員ID：</strong><span id="adminIdDisplay" style="color: #d32f2f; font-size: 20px;"></span>
+                    </p>
+                    <p style="font-size: 16px; margin: 10px 0; color: #666;">系統管理員</p>
+                </div>
+                <div style="display: flex; gap: 15px; justify-content: center; margin-top: 20px; flex-wrap: wrap;">
+                    <a href="./Admin.html" class="submit-btn" style="padding: 12px 25px; text-decoration: none; display: inline-block; background-color: #d32f2f;">管理員控制台</a>
+                    <a href="./Home.html" class="submit-btn" style="padding: 12px 25px; text-decoration: none; display: inline-block; background-color: #666;">返回首頁</a>
+                    <button onclick="logout()" class="submit-btn" style="padding: 12px 25px; background-color: #6c757d;">登出</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center>
+        <!-- 版權聲明 -->
+        <small>
+            &copy; 2024 SweetTears。保留所有權利。
+        </small>
+    </center>
+
+    <script>
+        // 當前登入的用戶
+        let currentUser = null;
+        let isAdmin = false;
+        
+        // 管理員帳號設定（實際使用時應該更安全）
+        const ADMIN_ACCOUNTS = ['admin', '管理員'];
+        
+        // 訪客註冊
+        function registerMember() {
+            const userName = document.getElementById('memberName').value.trim();
+            
+            if (!userName) {
+                alert('請輸入您的遊戲ID！');
+                return;
+            }
+            
+            if (userName.length < 2) {
+                alert('遊戲ID至少需要2個字元！');
+                return;
+            }
+            
+            // 檢查是否已存在（檢查公會成員、訪客和管理員）
+            const guildMembers = JSON.parse(localStorage.getItem('registeredMembers') || '[]');
+            const guestMembers = JSON.parse(localStorage.getItem('guestbookMembers') || '[]');
+            
+            if (guildMembers.includes(userName) || guestMembers.includes(userName) || ADMIN_ACCOUNTS.includes(userName)) {
+                alert('此遊戲ID已存在！');
+                return;
+            }
+            
+            // 註冊為訪客
+            guestMembers.push(userName);
+            localStorage.setItem('guestbookMembers', JSON.stringify(guestMembers));
+            
+            // 提示訪客通知管理員
+            alert(`${userName}，您的註冊申請已提交！\n請通知管理員進行審核，審核通過後即可登入留言。`);
+            
+            // 清空輸入框
+            document.getElementById('memberName').value = '';
+        }
+        
+        // 公會成員登入
+        function loginMember() {
+            const userName = document.getElementById('memberName').value.trim();
+            
+            if (!userName) {
+                alert('請輸入您的遊戲ID！');
+                return;
+            }
+            
+            // 檢查已審核的公會成員
+            const guildMembers = JSON.parse(localStorage.getItem('registeredMembers') || '[]');
+            if (guildMembers.includes(userName)) {
+                currentUser = userName;
+                isAdmin = false;
+                // 保存登入狀態到 localStorage
+                localStorage.setItem('currentUser', userName);
+                localStorage.setItem('isAdmin', 'false');
+                showSuccessMessage(userName, '公會成員');
+                return;
+            }
+            
+            // 檢查訪客
+            const guestMembers = JSON.parse(localStorage.getItem('guestbookMembers') || '[]');
+            if (guestMembers.includes(userName)) {
+                currentUser = userName;
+                isAdmin = false;
+                // 保存登入狀態到 localStorage
+                localStorage.setItem('currentUser', userName);
+                localStorage.setItem('isAdmin', 'false');
+                showSuccessMessage(userName, '訪客');
+                return;
+            }
+            
+            alert('此遊戲ID不存在！\n請先註冊，註冊後聯繫管理員。');
+        }
+        
+        // 管理員登入
+        function adminLogin() {
+            const userName = document.getElementById('memberName').value.trim();
+            
+            if (!userName) {
+                alert('請輸入管理員名稱！');
+                return;
+            }
+            
+            // 檢查是否為管理員
+            if (ADMIN_ACCOUNTS.includes(userName)) {
+                currentUser = userName;
+                isAdmin = true;
+                // 保存登入狀態到 localStorage
+                localStorage.setItem('currentUser', userName);
+                localStorage.setItem('isAdmin', 'true');
+                showSuccessMessage(userName, '管理員');
+            } else {
+                alert('此名稱不是管理員帳號！');
+            }
+        }
+        
+        // 顯示登入成功訊息
+        function showSuccessMessage(userName, userType) {
+            document.getElementById('authSection').style.display = 'none';
+            
+            if (userType === '管理員') {
+                // 顯示管理員狀態頁面
+                document.getElementById('adminStatusSection').style.display = 'block';
+                document.getElementById('memberStatusSection').style.display = 'none';
+                document.getElementById('adminIdDisplay').textContent = userName;
+            } else {
+                // 顯示成員狀態頁面
+                document.getElementById('memberStatusSection').style.display = 'block';
+                document.getElementById('adminStatusSection').style.display = 'none';
+                document.getElementById('memberIdDisplay').textContent = userName;
+                
+                // 設定成員類型顯示
+                const memberTypeDisplay = document.getElementById('memberTypeDisplay');
+                if (userType === '公會成員') {
+                    memberTypeDisplay.innerHTML = '👑 已審核公會成員';
+                } else {
+                    memberTypeDisplay.innerHTML = '👤 訪客 <small style="color: #999;">(只能瀏覽網頁，無法留言)</small>';
+                }
+            }
+        }
+        
+        // 登出功能
+        function logout() {
+            console.log('執行登出功能');
+            currentUser = null;
+            isAdmin = false;
+            // 清除 localStorage 中的登入狀態
+            localStorage.removeItem('currentUser');
+            localStorage.removeItem('isAdmin');
+            console.log('已清除 localStorage 中的登入狀態');
+            
+            // 強制刷新頁面以確保狀態完全重置
+            setTimeout(function() {
+                window.location.reload();
+            }, 100);
+        }
+        
+        // 頁面載入時初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 檢查是否已經登入
+            const savedUser = localStorage.getItem('currentUser');
+            const savedAdmin = localStorage.getItem('isAdmin') === 'true';
+            
+            // 調試信息
+            console.log('頁面載入 - savedUser:', savedUser, 'savedAdmin:', savedAdmin);
+            
+            // 如果沒有保存的用戶信息，直接返回（顯示登入表單）
+            if (!savedUser) {
+                console.log('沒有保存的用戶信息，顯示登入表單');
+                return;
+            }
+            
+            currentUser = savedUser;
+            isAdmin = savedAdmin;
+            
+            // 自動顯示對應的狀態頁面
+            if (isAdmin) {
+                // 驗證管理員身份
+                if (ADMIN_ACCOUNTS.includes(savedUser)) {
+                    showSuccessMessage(savedUser, '管理員');
+                } else {
+                    // 如果不是有效的管理員，清除登入狀態
+                    localStorage.removeItem('currentUser');
+                    localStorage.removeItem('isAdmin');
+                    currentUser = null;
+                    isAdmin = false;
+                }
+            } else {
+                // 檢查用戶類型
+                const guildMembers = JSON.parse(localStorage.getItem('registeredMembers') || '[]');
+                const guestMembers = JSON.parse(localStorage.getItem('guestbookMembers') || '[]');
+                
+                if (guildMembers.includes(savedUser)) {
+                    showSuccessMessage(savedUser, '公會成員');
+                } else if (guestMembers.includes(savedUser)) {
+                    showSuccessMessage(savedUser, '訪客');
+                } else {
+                    // 如果找不到用戶，清除登入狀態
+                    localStorage.removeItem('currentUser');
+                    localStorage.removeItem('isAdmin');
+                    currentUser = null;
+                    isAdmin = false;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<!-- 網站title與文字底色 -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News / 彼岸花；開彼岸。</title>
+    <style>
+        @import url('https://fonts.googleapis.com/earlyaccess/cwtexming.css');
+        header {
+            background-color: #222;
+            color: rgba(199, 118, 131, 0.986);
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #444;
+            color: #fff;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 1px;
+            padding: 0px;
+        }
+        nav ul > li {
+            display: inline-block;
+            position: relative;
+        }
+        nav ul > li > a {
+            display: block;
+            text-decoration: none;
+            color: #fff;
+            padding: 5px;
+            margin: 0 5px;
+        }
+        nav a:hover {
+            background-color: #666;
+            color: rgb(248, 161, 161);
+        }
+        .active {
+            color: rgb(250, 136, 136);
+        }
+        div {
+            position: relative;
+        }
+        @keyframes fadein {
+            0% {opacity: 0;}
+            100% {opacity: 1;}
+        }
+        .ant {
+            animation: fadein 2s ease;
+        }
+        center {
+            font-family: 'cwTeXMing', 'Arial', serif;
+        }
+        p {
+            background-image: url("./index/Morrigan_Cichol_transmission.png");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        P:hover {
+            background-image: url("./index/Morrigan_Cichol_color.png");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        /* 子選單樣式 */
+        .submenu {
+            display: none;
+            position: absolute;
+            background-color: #444;
+            box-shadow: 0px 2px 5px #666;
+            z-index: 1;
+        }
+        nav ul > li:hover .submenu {
+            display: block;
+        }
+        .submenu > li > a {
+            display: block;
+            padding: 5px 5px;
+            text-decoration: none;
+            color: #fff;
+        }
+        .submenu > li > a:hover {
+            background-color: #666;
+            color: rgb(248, 161, 161);
+        }
+        /* 方塊樣式 */
+        .pics {
+            position:relative;
+        }
+        .pics img { 
+            position:absolute;
+            /* 淡出淡入效果2秒 */
+            -webkit-transition: opacity 300ms ease-in-out;
+            -moz-transition: opacity 300ms ease-in-out;
+            -o-transition: opacity 300ms ease-in-out;
+            transition: opacity 300ms ease-in-out;
+        }
+        .pics img:last-child:hover {
+        /* 滑入時第一張透明度設0 */
+            opacity:0;
+        }
+    </style>
+    
+    <script>
+        $(document).ready(function(){
+            $('.tr_1_more').on("click",function(){
+                $('.tr_1_more').hide() ;
+                $('.tr_1').hide() ;
+                $('.tr_2').show() ;
+            })
+            $('.tr_1_more').show() ;
+            $('.tr_1').show() ;
+            $('.tr_2').hide() ;
+        })
+    </script>
+</head>
+
+<body>
+    <!-- 網站title -->
+    <center>
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tr>
+                <td class="styleNewsContentRight" align="center">
+                    <header>
+                        <h1>彼岸花；開彼岸。</h1>
+                    </header>
+                </td>
+            </tr>
+        </table>
+    </center>
+    <center>
+        <!-- 網址目錄 -->
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tr>
+                <td class="styleNewsContentRight" align="center">
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="./Home.html">Home</a>
+                            </li>
+                            <li>
+                                <a href="./Aboutus.html">About us</a>
+                                <ul class="submenu">
+                                    <li><a href="./Intro.html">Intro</a></li>
+                                    <li><a href="./Managers.html">Managers</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a class="active" href="./News.html">News</a>
+                            </li>
+                            <li>
+                                <a href="./Album.html">Album</a>
+                            </li>
+                            <li>
+                                <a href="./Login.html">Login</a>
+                            </li>
+                            <li>
+                                <a href="https://forum.gamer.com.tw/C.php?bsn=16583&snA=58352&tnum=747&subbsn=12" target="_blank">Join us</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </td>
+            </tr>
+        </table>
+    </center>
+    <!-- 分頁title -->
+    <center>
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tr>
+                <td class="styleNewsContentRight" align="center" valign="center">
+                    <h1><big><font color="black">ꕥNEWSꕥ</h1></big></font>
+                </td>
+            </tr>
+        </table>
+    </center> 
+    <center>
+        <!-- New內容 -->
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 5px 0px" width="1080">
+            <tbody>
+                <tr>
+                    <td colspan="2" width="900" height="150">
+                        <div class="ant">
+                            <p>
+                                <big><big><font color="pink">彼岸花，第五周年</font></big></big>
+                                <br>
+                                <br>
+                                Oct. 30, 2020
+                                <br>
+                                <br>
+                                公會來到第五年，曾經懵懵懂懂的學生如今都成為了社會人士，感謝各位的支持，今年有點忙就不舉辦公會活動了，第六年還請各位多指教
+                                <br>
+                                From 跳不動的ST
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="900" height="150">
+                        <div class="ant">
+                            <p>
+                                <big><big><font color="pink">公會成立第四年─得獎公告</font></big></big>
+                                <br>
+                                <br>
+                                Oct. 10, 2019
+                                <br>
+                                公會四周年活動圓滿結束囉~感謝各位成員的參予。
+                                <br>
+                                <br>
+                                <a href="./2019彼岸花四周年得獎公告.html">詳細資訊</a>
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="900" height="150">
+                        <div class="ant">
+                            <p>
+                                <big><big><font color="pink">公會成立第四年─活動公告</font></big></big>
+                                <br>
+                                <br>
+                                Sept. 27, 2019
+                                <br>
+                                公會四周年活動出爐囉！有以下項目，歡迎各位成員多多參予：
+                                <br>
+                                1.躲貓貓
+                                <br>
+                                2.櫻子華麗搶答time
+                                <br>
+                                3.Bonus活動
+                                <br>
+                                <a href="./2019彼岸花四周年活動公告.html">詳細資訊</a>
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="900" height="150">
+                        <div class="ant">
+                            <p>
+                                <big><big><font color="pink">公會成立第四年─周年活動時間調查</font></big></big>
+                                <br>
+                                <br>
+                                Sept. 23, 2019
+                                <br>
+                                <br>
+                                公會將在10/4、5、6擇一日舉辦第四週年的活動，請各位動一下手指，填一下活動時間調查的問卷吧!
+                                <br>
+                                <a href="reurl.cc/M7Akq4">詳細資訊</a>(已關閉)
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" width="900" height="150">
+                        <div class="ant">
+                            <p>
+                                <big><big><font color="pink">公會成立第四年─活動籌備中</font></big></big>
+                                <br>
+                                <br>
+                                Jun. 12, 2019
+                                <br>
+                                <br>
+                                恭喜本公會即將邁入第四年，目前正在籌辦活動當中，如果有人有什麼想法都可以在遊戲中私訊管理員喔！
+                                <br>
+                                <br>
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="styleNewsContentRight" align="center" valign="center" >
+                        <a href="./News-P1.html">1</a>
+                        <a class="active" href="./News-P2.html">2</a>
+                        <a href="./News-P3.html">3</a>
+                        <a href="./News-P4.html">4</a>
+                        <a href="./News-P5.html">5</a>
+                        <a href="./News.html">6</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center>
+        <!-- 版權聲明 -->
+        <small>
+            &copy; 2024 SweetTears。保留所有權利。
+        </small>
+    </center>
+</body>
+
+
+</html>
