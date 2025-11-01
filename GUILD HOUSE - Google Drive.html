@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<!-- 網站title與文字底色 -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album: Daily photo / 彼岸花；開彼岸。</title>
+    <style>
+        @import url('https://fonts.googleapis.com/earlyaccess/cwtexming.css');
+        header {
+            background-color: #222;
+            color: rgba(199, 118, 131, 0.986);
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #444;
+            color: #fff;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 1px;
+            padding: 0px;
+        }
+        nav ul > li {
+            display: inline-block;
+            position: relative;
+        }
+        nav ul > li > a {
+            display: block;
+            text-decoration: none;
+            color: #fff;
+            padding: 5px;
+            margin: 0 5px;
+        }
+        nav a:hover {
+            background-color: #666;
+            color: rgb(248, 161, 161);
+        }
+        .active {
+            color: rgb(250, 136, 136);
+        }
+        div {
+            position: relative;
+        }
+        @keyframes fadein {
+            0% {opacity: 0;}
+            100% {opacity: 1;}
+            from {left: -100px;}
+            to   {left: 0px;}
+        }
+        .ant {
+            animation: fadein 1s ease;
+        }
+        @keyframes fadein_top {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+
+            from {
+                top: -50px;
+            }
+
+            to {
+                top: 0px;
+            }
+        }
+
+        .ant_top {
+            animation: fadein_top 2s ease;
+        }
+
+        @keyframes fadein_bot {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+
+            from {
+                bottom: -50px;
+            }
+
+            to {
+                bottom: 0px;
+            }
+        }
+
+        .ant_bot {
+            animation: fadein_bot 2s ease;
+        }
+
+        center {
+            font-family: 'cwTeXMing', 'Arial', serif;
+        }
+        /* 子選單樣式 */
+        .submenu {
+            display: none;
+            position: absolute;
+            background-color: #444;
+            box-shadow: 0px 2px 5px #666;
+            z-index: 1;
+        }
+        nav ul > li:hover .submenu {
+            display: block;
+        }
+        .submenu > li > a {
+            display: block;
+            padding: 5px 5px;
+            text-decoration: none;
+            color: #fff;
+        }
+        .submenu > li > a:hover {
+            background-color: #666;
+            color: rgb(248, 161, 161);
+        }
+        /* 方塊樣式 */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-gap: 10px;
+        }
+        .gallery img {
+            width: 100%;
+            height: auto;
+            max-width: 200px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .gallery img:hover {
+            transform: scale(1.1);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            height: 70%;
+            max-height: 700px;
+            position: relative;
+        }
+        .close {
+            color: #fff;
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -50px;
+            color: #fff;
+            font-weight: bold;
+            font-size: 20px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+        .prev {
+            left: 0;
+        }
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .thumbnail {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-wrap: nowrap;
+            margin-top: 20px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            height: 220px;
+            padding: 10px 0;
+            scrollbar-width: auto;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+        .thumbnail::-webkit-scrollbar {
+            height: 8px;
+        }
+        .thumbnail::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        .thumbnail::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+        .thumbnail::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        .thumbnail img {
+            height: 200px;
+            width: auto;
+            object-fit: contain;
+            margin-right: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            flex-shrink: 0;
+            border: 2px solid transparent;
+            border-radius: 4px;
+        }
+        .thumbnail img:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+        .thumbnail img.active {
+            border: 3px solid #fff;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        .thumbnail img:last-child {
+            margin-right: 0;
+        }
+        .caption {
+            color: #fff;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+</style>
+    
+    <script>
+        $(document).ready(function(){
+            $('.tr_1_more').on("click",function(){
+                $('.tr_1_more').hide() ;
+                $('.tr_1').hide() ;
+                $('.tr_2').show() ;
+            })
+            $('.tr_1_more').show() ;
+            $('.tr_1').show() ;
+            $('.tr_2').hide() ;
+        })
+    </script>
+</head>
+
+<body>
+    <!-- 網站title -->
+    <center>
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tr>
+                <td class="styleNewsContentRight" align="center">
+                    <header>
+                        <h1>彼岸花；開彼岸。</h1>
+                    </header>
+                </td>
+            </tr>
+        </table>
+    </center>
+    <center>
+        <!-- 網址目錄 -->
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tr>
+                <td class="styleNewsContentRight" align="center">
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="./Home.html">Home</a>
+                            </li>
+                            <li>
+                                <a href="./Aboutus.html">About us</a>
+                                <ul class="submenu">
+                                    <li><a href="./Intro.html">Intro</a></li>
+                                    <li><a href="./Managers.html">Managers</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="./News.html">News</a>
+                            </li>
+                            <li>
+                                <a class="active" href="./Album - Google Drive.html">Album</a>
+                            </li>
+                            <li>
+                                <a href="./Login.html">Login</a>
+                            </li>
+                            <li>
+                                <a href="https://forum.gamer.com.tw/C.php?bsn=16583&snA=58352&tnum=747&subbsn=12" target="_blank">Join us</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </td>
+            </tr>
+        </table>
+    </center>
+    <center>
+        <!-- 文字介紹 -->
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tbody>
+                <tr>
+                    <td align="center" valign="top" width="960">
+                        <div class="ant_bot">
+                            <h1>
+                                <small><font color="#f8a1a1">DAILY PHOTO</font></small>
+                            </h1>
+                        </div>
+                        <div class="ant_top">
+                            <br>
+                            <p>From August 2015
+                            <br>
+                            <br>
+                            記錄著過往的公會活動和日常</p>
+                        </div>
+                        
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td align="center" valign="top" width="960">
+                        <big>GUILD HOUSE</big>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" valign="top" width="960">
+                        <p style="color: #f8a1a1; font-size: 12px; margin-top: 10px;">
+                            如果圖片無法顯示，請通知管理員
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" valign="top" width="960">
+                        <div class="container">
+                            <div class="gallery" id="gallery">
+                                <!-- 圖片將由 JavaScript 從 Google Drive 動態載入 -->
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+        <div class="caption" id="caption"></div>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        <div class="thumbnail"></div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center>
+        <p>
+            <a href="./Album - Google Drive.html">Back</a>
+        </p>
+    </center>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center>
+    <!-- 版權聲明 -->
+        <small>
+            <p>&copy; 2024 SweetTears。保留所有權利。</p>
+        </small>
+    </center>
+
+    <script>
+        // ═══════════════════════════════════════════════════
+        // Google Drive 圖片配置
+        // ═══════════════════════════════════════════════════
+        // 將本地圖片路徑映射到 Google Drive 檔案 ID
+        // 如何取得檔案 ID：在 Google Drive 中右鍵點擊圖片 → 「取得連結」
+        // 從連結中複製檔案 ID（例如：https://drive.google.com/file/d/檔案ID/view）
+        // ═══════════════════════════════════════════════════
+        const imageFileIdMap = {
+            './Album/GUILD HOUSE/2019_01_01_0000.jpg': '1TGg5qzmWHuu8z3hSZ1HKN1FOwJGU1LpY',
+            './Album/GUILD HOUSE/2019_01_01_0001.jpg': '1ZHsyV7jzrr97Pqe3N4foHscTDvGfxKDu',
+            './Album/GUILD HOUSE/2019_01_01_0002.jpg': '1keXJ21j3BqQhCweVGJxKBm5cipljcF_L',
+            './Album/GUILD HOUSE/2019_01_20_0000.jpg': '12W5vN0GNDyyd-NOeNSLrbyCkTFKj_If2',
+            './Album/GUILD HOUSE/2019_01_20_0001.jpg': '1kaRgtkqpf0UNXqO54SZoHobMuvUfLiW2',
+            './Album/GUILD HOUSE/2019_01_20_0002.jpg': '1dNsrJOh61Qz4pPxFOrHXeItmq55RSffC',
+            './Album/GUILD HOUSE/2019_01_20_0003.jpg': '1Rhs8uXnAHYH0RLheeCaxkrwLPtZSU-Kv',
+            './Album/GUILD HOUSE/2019_01_20_0004.jpg': '12jbjTzS6k3UUtEiuOTB40QtVNFlTzM7s',
+            './Album/GUILD HOUSE/2019_01_20_0005.jpg': '1wnO8zIB1l8-BtBz-bBYZLw4UPQWoP3_5',
+            './Album/GUILD HOUSE/2019_01_20_0006.jpg': '1Tv-BCwys9yRp32x6HD8Pn5vmGFmk_1ve',
+            './Album/GUILD HOUSE/2019_01_20_0007.jpg': '1pkwaQgOr-FNsf4HuL0bzueCXZZjMlWLE',
+            './Album/GUILD HOUSE/2019_01_20_0008.jpg': '1-Xh52OeCxDb97JMm0axqcOy9gdTzchmW',
+            './Album/GUILD HOUSE/2019_01_20_0009.jpg': '14Np-HAk3T3mtx64nc8AjHB9R9dUjLvYL',
+            './Album/GUILD HOUSE/2019_01_20_0010.jpg': '1nMO1U75YiVw2huZDvNZt85o0SzHRYKGJ',
+            './Album/GUILD HOUSE/2019_01_20_0012.jpg': '1PT_PmUb5ekX3sSQlz-DCWkRbiWo9qW3d',
+            './Album/GUILD HOUSE/2019_01_20_0014.jpg': '15yp6n5IkBzrSfFmn2dvfzC_zv4Vrn_M3',
+            './Album/GUILD HOUSE/2019_01_20_0015.jpg': '1EmNaempoUkRZgzjFYrust00bfidFrPOd',
+            './Album/GUILD HOUSE/2019_01_20_0016.jpg': '1TCI2Gh_kAgIQtaDhiBRchud18kZycU58',
+            './Album/GUILD HOUSE/2019_01_20_0017.jpg': '1rwrrGcGzfZBitPL6dh5nVWnsU4pNanhg',
+        };
+        
+                // ═══════════════════════════════════════════════════
+        // 可選的圖片 Alt 文字配置（用於圖片的替代文字）
+        // ═══════════════════════════════════════════════════
+        // 格式：原始路徑對應到 alt 文字（留空則不使用 alt）
+        // 如果不需要 alt 功能，可以刪除此 map 或留空所有項目
+        // ═══════════════════════════════════════════════════
+        const imageAltMap = {
+            // 範例：\'./Album/DAILY PHOTO/2018/2018_02_03_0004.jpg\': \'圖片描述文字\'
+        };
+        
+        // 將檔案 ID 轉換為 Google Drive 圖片 URL
+        // 嘗試多種 URL 格式以確保圖片能正常顯示
+        function getGoogleDriveImageUrl(fileId) {
+            if (!fileId) return '';
+            // 方式1：標準的公開圖片連結（檔案需設為公開或「知道連結的使用者」）
+            return `https://drive.google.com/uc?export=view&id=${fileId}`;
+        }
+        
+        // 備用的圖片 URL 格式（如果上面的不行可以用這個）
+        function getGoogleDriveImageUrlAlternative(fileId) {
+            if (!fileId) return '';
+            // 方式2：使用 Google 縮圖服務（需要檔案公開）
+            return `https://lh3.googleusercontent.com/d/${fileId}`;
+        }
+        
+        // ═══════════════════════════════════════════════════
+        // 原有的圖片畫廊功能變數
+        // ═══════════════════════════════════════════════════
+        var modal = document.getElementById("myModal");
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        var thumbnails = document.querySelector(".thumbnail");
+        var slideIndex = 0;
+        var images;
+        var isProgrammaticScroll = false; // 標記是否是程式控制的滾動（用於避免循環邏輯在點擊時觸發）
+
+        // 從 Google Drive 載入圖片（只載入已經填入檔案 ID 的圖片）
+        function loadImagesFromGoogleDrive() {
+            const gallery = document.getElementById('gallery');
+            
+            // 清空畫廊
+            gallery.innerHTML = '';
+            
+            // 遍歷 imageFileIdMap，只載入已經填入檔案 ID 的圖片
+            Object.keys(imageFileIdMap).forEach(function(originalPath) {
+                const fileId = imageFileIdMap[originalPath];
+                // 只載入已經填入檔案 ID 的圖片（非空字串）
+                if (fileId && fileId.trim() !== '') {
+                    const img = document.createElement('img');
+                    const imageUrl = getGoogleDriveImageUrl(fileId);
+                    img.src = imageUrl;
+                    img.setAttribute('data-original-path', originalPath);
+                    
+                    // 如果 imageAltMap 中有設定 alt，則設置 alt 屬性
+                    if (imageAltMap && imageAltMap[originalPath] && imageAltMap[originalPath].trim() !== '') {
+                        img.alt = imageAltMap[originalPath];
+                    }
+                    // 添加錯誤處理：如果圖片載入失敗，顯示提示
+                    img.onerror = function() {
+                        console.error('圖片載入失敗:', fileId, originalPath);
+                        // 嘗試備用 URL
+                        const altUrl = getGoogleDriveImageUrlAlternative(fileId);
+                        if (this.src !== altUrl) {
+                            this.src = altUrl;
+                        } else {
+                            // 如果還是失敗，顯示錯誤訊息
+                            this.style.border = '2px solid red';
+                            // alt removed - 錯誤訊息已移除
+                        }
+                    };
+                    
+                    // 圖片載入成功時的處理
+                    img.onload = function() {
+                        console.log('圖片載入成功:', fileId);
+                    };
+                    
+                    gallery.appendChild(img);
+                }
+            });
+            
+            // 圖片載入完成後，初始化畫廊功能
+            // 使用 setTimeout 確保圖片有時間載入
+            setTimeout(function() {
+                initGallery();
+            }, 100);
+        }
+        
+        // 初始化畫廊功能
+        function initGallery() {
+            images = document.querySelectorAll(".gallery img");
+            
+            images.forEach(function(img, index){
+                img.addEventListener("click", function(){
+                    modal.style.display = "block";
+                    modalImg.src = this.src;
+                    slideIndex = index;
+                    showThumbnails();
+                    showCaption();
+                });
+            });
+
+            var span = document.getElementsByClassName("close")[0];
+
+            span.onclick = function() {
+                modal.style.display = "none";
+            };
+            
+            // 啟用縮圖區域的滾輪水平滾動
+            enableThumbnailWheelScroll();
+        }
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var slides = document.querySelectorAll('.gallery img');
+            if (n >= slides.length) {slideIndex = 0;}
+            if (n < 0) {slideIndex = slides.length - 1;}
+            modalImg.src = slides[slideIndex].src;
+            showThumbnails();
+            showCaption();
+        }
+
+        function showThumbnails() {
+            thumbnails.innerHTML = "";
+            
+            // 為了實現循環滾動，在開頭複製最後一張，在結尾複製第一張
+            var totalImages = images.length;
+            
+            // 創建最後一張的縮圖（放在最前面，作為循環連接）
+            if (totalImages > 0) {
+                var lastThumb = document.createElement("img");
+                lastThumb.src = images[totalImages - 1].src;
+                lastThumb.alt = "thumbnail " + totalImages;
+                lastThumb.classList.add("clone-last");
+                lastThumb.onclick = function() {
+                    currentSlide(totalImages - 1);
+                };
+                thumbnails.appendChild(lastThumb);
+            }
+            
+            // 創建真實的縮圖
+            images.forEach(function(img, index){
+                var thumb = document.createElement("img");
+                thumb.src = img.src;
+                thumb.alt = "thumbnail " + (index + 1);
+                thumb.setAttribute("data-index", index);
+                if (index === slideIndex) {
+                    thumb.classList.add("active");
+                }
+                thumb.onclick = function() {
+                    currentSlide(index);
+                };
+                thumbnails.appendChild(thumb);
+            });
+            
+            // 創建第一張的縮圖（放在最後面，作為循環連接）
+            if (totalImages > 0) {
+                var firstThumb = document.createElement("img");
+                firstThumb.src = images[0].src;
+                // firstThumb.alt removed
+                firstThumb.classList.add("clone-first");
+                firstThumb.onclick = function() {
+                    currentSlide(0);
+                };
+                thumbnails.appendChild(firstThumb);
+            }
+            
+            // 確保當前選中的縮圖可見（滾動到可見區域）
+            // 需要滾動到真實圖片位置，不是複製的圖片
+            var activeThumb = thumbnails.querySelector('img.active');
+            if (activeThumb) {
+                // 標記這是程式控制的滾動，避免觸發循環邏輯
+                isProgrammaticScroll = true;
+                
+                // 計算真實縮圖的位置（需要考慮開頭的複製圖片）
+                setTimeout(function() {
+                    // 確保滾動到真實圖片區域，而不是複製的圖片
+                    // 使用 center 確保圖片居中，避免太靠近邊緣觸發循環邏輯
+                    activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                    
+                    // 等待滾動完成後，再等待一段時間才取消標記，確保不會觸發循環邏輯
+                    // 增加延遲時間，確保滾動動畫完全結束
+                    setTimeout(function() {
+                        isProgrammaticScroll = false;
+                    }, 1000);
+                }, 200);
+            } else {
+                // 如果沒有找到 active 縮圖，也需要重置標記
+                setTimeout(function() {
+                    isProgrammaticScroll = false;
+                }, 1000);
+            }
+        }
+        
+        // 啟用縮圖區域的滾輪水平滾動（包含循環效果）
+        function enableThumbnailWheelScroll() {
+            thumbnails.addEventListener('wheel', function(e) {
+                // 防止預設的垂直滾動
+                if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+                    e.preventDefault();
+                    // 將垂直滾動轉換為水平滾動
+                    this.scrollLeft += e.deltaY;
+                }
+            }, { passive: false });
+            
+            // 監聽滾動事件，實現真正的循環效果（無縫循環）
+            thumbnails.addEventListener('scroll', function() {
+                // 如果是程式控制的滾動，不觸發循環邏輯
+                if (isProgrammaticScroll) return;
+                
+                var scrollLeft = this.scrollLeft;
+                var clientWidth = this.clientWidth;
+                
+                // 計算第一張和最後一張真實圖片的位置
+                var firstRealThumb = this.querySelector('img[data-index="0"]');
+                var lastRealThumb = this.querySelector('img[data-index="' + (images.length - 1) + '"]');
+                
+                if (!firstRealThumb || !lastRealThumb) return;
+                
+                var firstRealLeft = firstRealThumb.offsetLeft;
+                var lastRealLeft = lastRealThumb.offsetLeft;
+                var lastRealRight = lastRealLeft + lastRealThumb.offsetWidth;
+                
+                // 獲取複製圖片的位置
+                var cloneLastThumb = this.querySelector('img.clone-last');
+                var cloneFirstThumb = this.querySelector('img.clone-first');
+                
+                if (cloneLastThumb && cloneFirstThumb) {
+                    var cloneLastRight = cloneLastThumb.offsetLeft + cloneLastThumb.offsetWidth;
+                    var cloneFirstLeft = cloneFirstThumb.offsetLeft;
+                    var viewportRight = scrollLeft + clientWidth;
+                    
+                    // 如果滾動到最右邊（看到結尾的複製圖片），立即無縫調整到開頭
+                    if (scrollLeft >= cloneFirstLeft) {
+                        isProgrammaticScroll = true;
+                        // 直接調整 scrollLeft，讓它看起來是連續的
+                        // 計算：從複製的第一張圖片區域調整到對應的真實第一張圖片位置
+                        // 偏移量 = 真實第一張位置 - 複製第一張位置
+                        var offset = firstRealLeft - cloneFirstLeft;
+                        // 調整後的位置 = 當前滾動位置 - 偏移量
+                        this.scrollLeft = scrollLeft - offset;
+                        // 立即取消標記，因為這是一次性的調整
+                        setTimeout(function() {
+                            isProgrammaticScroll = false;
+                        }, 50);
+                    }
+                    // 如果滾動到最左邊（看到開頭的複製圖片），立即無縫調整到結尾
+                    else if (scrollLeft < cloneLastRight) {
+                        isProgrammaticScroll = true;
+                        // 直接調整 scrollLeft，讓它看起來是連續的
+                        // 計算：從複製的最後一張圖片區域調整到對應的真實最後一張圖片位置
+                        // 偏移量 = 真實最後一張位置 - 複製最後一張右邊界
+                        var offset = lastRealLeft - cloneLastRight;
+                        // 調整後的位置 = 當前滾動位置 - 偏移量
+                        this.scrollLeft = scrollLeft - offset;
+                        // 立即取消標記，因為這是一次性的調整
+                        setTimeout(function() {
+                            isProgrammaticScroll = false;
+                        }, 50);
+                    }
+                }
+            });
+        }
+
+        function showCaption() {
+            captionText.innerHTML = images[slideIndex].alt || ''; // 如果有 alt 則顯示，否則顯示空字串，路徑資訊保留在 data-original-path 屬性中
+        }
+        
+        // 頁面載入時執行從 Google Drive 載入圖片
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadImagesFromGoogleDrive);
+        } else {
+            loadImagesFromGoogleDrive();
+        }
+    </script>
+
+    </div>
+
+    </body>
+
+</html>
+

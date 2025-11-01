@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<!-- 網站title與文字底色 -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album / 彼岸花；開彼岸。</title>
+    <style>
+        @import url('https://fonts.googleapis.com/earlyaccess/cwtexming.css');
+
+        header {
+            background-color: #222;
+            color: rgba(199, 118, 131, 0.986);
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #444;
+            color: #fff;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 1px;
+            padding: 0px;
+        }
+
+        nav ul>li {
+            display: inline-block;
+            position: relative;
+        }
+
+        nav ul>li>a {
+            display: block;
+            text-decoration: none;
+            color: #fff;
+            padding: 5px;
+            margin: 0 5px;
+        }
+
+        nav a:hover {
+            background-color: #666;
+            color: rgb(248, 161, 161);
+        }
+
+        .active {
+            color: rgb(250, 136, 136);
+        }
+
+        div {
+            position: relative;
+        }
+
+        @keyframes fadein_top {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+
+            from {
+                top: -50px;
+            }
+
+            to {
+                top: 0px;
+            }
+        }
+
+        .ant_top {
+            animation: fadein_top 2s ease;
+        }
+
+        @keyframes fadein_bot {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+
+            from {
+                bottom: -100px;
+            }
+
+            to {
+                bottom: 0px;
+            }
+        }
+
+        .ant_bot {
+            animation: fadein_bot 2s ease;
+        }
+
+        center {
+            font-family: 'cwTeXMing', 'Arial', serif;
+        }
+
+        /* 子選單樣式 */
+        .submenu {
+            display: none;
+            position: absolute;
+            background-color: #444;
+            box-shadow: 0px 2px 5px #666;
+            z-index: 1;
+        }
+
+        nav ul>li:hover .submenu {
+            display: block;
+        }
+
+        .submenu>li>a {
+            display: block;
+            padding: 5px 5px;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .submenu>li>a:hover {
+            background-color: #666;
+            color: rgb(248, 161, 161);
+        }
+
+        .slideshow-container {
+            position: relative;
+            width: 540px;
+            max-width: 540px;
+            margin: auto;
+            overflow: hidden;
+            height: 250px;
+        }
+
+        .slideshow-inner {
+            display: flex;
+            transition: transform 0.8s ease;
+            height: 250px;
+            width: 100%;
+        }
+
+        .mySlides {
+            min-width: 540px;
+            width: 540px;
+            max-width: 540px;
+            flex-shrink: 0;
+            flex-grow: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 250px;
+            box-sizing: border-box;
+            position: relative;
+        }
+        
+        .mySlides img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+            $('.tr_1_more').on("click", function () {
+                $('.tr_1_more').hide();
+                $('.tr_1').hide();
+                $('.tr_2').show();
+            })
+            $('.tr_1_more').show();
+            $('.tr_1').show();
+            $('.tr_2').hide();
+        })
+    </script>
+</head>
+
+<body>
+    <!-- 網站title -->
+    <center>
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tr>
+                <td class="styleNewsContentRight" align="center">
+                    <header>
+                        <h1>彼岸花；開彼岸。</h1>
+                    </header>
+                </td>
+            </tr>
+        </table>
+    </center>
+    <center>
+        <!-- 網址目錄 -->
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tr>
+                <td class="styleNewsContentRight" align="center">
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="./Home.html">Home</a>
+                            </li>
+                            <li>
+                                <a href="./Aboutus.html">About us</a>
+                                <ul class="submenu">
+                                    <li><a href="./Intro.html">Intro</a></li>
+                                    <li><a href="./Managers.html">Managers</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="./News.html">News</a>
+                            </li>
+                            <li>
+                                <a class="active" href="./Album - Google Drive.html">Album</a>
+                            </li>
+                            <li>
+                                <a href="./Login.html">Login</a>
+                            </li>
+                            <li>
+                                <a href="https://forum.gamer.com.tw/C.php?bsn=16583&snA=58352&tnum=747&subbsn=12"
+                                    target="_blank">Join us</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </td>
+            </tr>
+        </table>
+    </center>
+    <center>
+        <table border="0" class="styleNews" style="border-spacing: 0px 0px; padding: 0px 0px" width="1080">
+            <tr>
+                <td class="styleNewsContentRight" align="center" valign="center">
+                    <h1><big>
+                            <font color="black">ꕥALBUMꕥ</h1></big></font>
+                </td>
+            </tr>
+        </table>
+    </center>
+    <center>
+        <!-- 相簿附錄 -->
+        <table border="0" class="styleNews" style="border-spacing: 5px 0px; padding: 0px 0px" width="1080">
+            <tbody>
+                <tr>
+                    <td width="540px" height="250px" align="right">
+                        <div class="slideshow-container" data-slideshow="DAILY_PHOTO">
+                            <div class="slideshow-inner">
+                                <!-- 圖片將由 JavaScript 從 Google Drive 動態載入 -->
+                            </div>
+                        </div>
+                    </td>
+                    <td width="540px" height="250px" align="left">
+                        <div class="ant_top">
+                            <p>
+                                <big>
+                                    <font color="#f8a1a1">DAILY PHOTO</font>
+                                </big>
+                            </p>
+                        </div>
+                        <div class="ant_bot">
+                            <p>
+                                <br>
+                                <br>
+                                周年活動暨日常記錄，不知不覺到了2025
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <small><a href="./2015~2017 DAILY PHOTO - Google Drive.html">2015~2017</a></small>
+                                <small><a href="./2019 DAILY PHOTO - Google Drive.html">2019</a></small>
+                                <small><a href="./2020 DAILY PHOTO - Google Drive.html">2020</a></small>
+                                <small><a href="./2021 DAILY PHOTO - Google Drive.html">2021</a></small>
+                                <small><a href="./2022 DAILY PHOTO - Google Drive.html">2022</a></small>
+                                <small><a href="./2023 DAILY PHOTO - Google Drive.html">2023</a></small>
+                                <small><a href="./2024 DAILY PHOTO - Google Drive.html">2024</a></small>
+                                <small><a href="./2025 DAILY PHOTO - Google Drive.html">2025</a></small>
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="540px" height="250px" align="right">
+                        <div class="ant_top">
+                            <p>
+                                <big>
+                                    <font color="#f8a1a1">9TH ANNIVERSARY</font>
+                                </big>
+                            </p>
+                        </div>
+                        <div class="ant_bot">
+                            <p>
+                                <br>
+                                <br>
+                                9週年活動照片紀錄集
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <small><a href="./9TH ANNIVERSARY - Google Drive.html">Read more</a></small>
+                            </p>
+                        </div>
+                    </td>
+                    <td width="540px" height="250px" align="left">
+                        <div class="slideshow-container" data-slideshow="9TH_ANNIVERSARY">
+                            <div class="slideshow-inner">
+                                <!-- 圖片將由 JavaScript 從 Google Drive 動態載入 -->
+                            </div>
+                        </div>
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td width="540px" height="250px" align="right">
+                        <div class="slideshow-container" data-slideshow="7TH_ANNIVERSARY">
+                            <div class="slideshow-inner">
+                                <!-- 圖片將由 JavaScript 從 Google Drive 動態載入 -->
+                            </div>
+                        </div>
+                    </td>
+                    <td width="540px" height="250px" align="left">
+                        <div class="ant_top">
+                            <p>
+                                <big>
+                                    <font color="#f8a1a1">7TH ANNIVERSARY</font>
+                                </big>
+                            </p>
+                        </div>
+                        <div class="ant_bot">
+                            <p>
+                                <br>
+                                <br>
+                                7週年活動照片紀錄集
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <small><a href="./7TH ANNIVERSARY - Google Drive.html">Read more</a></small>
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="540px" height="250px" align="right">
+                        <div class="ant_top">
+                            <p>
+                                <big>
+                                    <font color="#f8a1a1">​6TH ANNIVERSARY</font>
+                                </big>
+                            </p>
+                        </div>
+                        <div class="ant_bot">
+                            <p>
+                                <br>
+                                <br>
+                                ​​6週年活動大合照
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <small><a href="./6TH ANNIVERSARY - Google Drive.html">Read more</a></small>
+                            </p>
+                        </div>
+                    </td>
+                    <td width="540px" height="250px" align="left">
+                        <div class="slideshow-container" data-slideshow="6TH_ANNIVERSARY">
+                            <div class="slideshow-inner">
+                                <!-- 圖片將由 JavaScript 從 Google Drive 動態載入 -->
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="540px" height="250px" align="right">
+                        <div class="slideshow-container" data-slideshow="2020_BOUNENNKAI">
+                            <div class="slideshow-inner">
+                                <!-- 圖片將由 JavaScript 從 Google Drive 動態載入 -->
+                            </div>
+                        </div>
+                    </td>
+                    <td width="540px" height="250px" align="left">
+                        <div class="ant_top">
+                            <p>
+                                <big>
+                                    <font color="#f8a1a1">2020 BOUNENNKAI</font>
+                                </big>
+                            </p>
+                        </div>
+                        <div class="ant_bot">
+                            <p>
+                                <br>
+                                <br>
+                                2020彼岸花忘年活動紀錄
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <small><a href="./2020 BOUNENNKAI - Google Drive.html">Read more</a></small>
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="540px" height="250px" align="right">
+                        <div class="ant_top">
+                            <p>
+                                <big>
+                                    <font color="#f8a1a1">​LAST DAY IN GGC</font>
+                                </big>
+                            </p>
+                        </div>
+                        <div class="ant_bot">
+                            <p>
+                                <br>
+                                <br>
+                                在GGC的最後一天，公會成員合照
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <small><a href="./​LAST DAY IN GGC - Google Drive.html">Read more</a></small>
+                            </p>
+                        </div>
+                    </td>
+                    <td width="540px" height="250px" align="left">
+                        <div class="slideshow-container" data-slideshow="AUGUST_16_2019">
+                            <div class="slideshow-inner">
+                                <!-- 圖片將由 JavaScript 從 Google Drive 動態載入 -->
+                            </div>
+                        </div>
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td width="540px" height="250px" align="right">
+                        <div class="slideshow-container" data-slideshow="GUILD_HOUSE">
+                            <div class="slideshow-inner">
+                                <!-- 圖片將由 JavaScript 從 Google Drive 動態載入 -->
+                            </div>
+                        </div>
+                    </td>
+                    <td width="540px" height="250px" align="left">
+                        <div class="ant_top">
+                            <p>
+                                <big>
+                                    <font color="#f8a1a1">GUILD HOUSE</font>
+                                </big>
+                            </p>
+                        </div>
+                        <div class="ant_bot">
+                            <p>
+                                <br>
+                                <br>
+                                ​公會小屋
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <small><a href="./GUILD HOUSE - Google Drive.html">Read more</a></small>
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="540px" height="250px" align="right">
+                        <div class="ant_top">
+                            <p>
+                                <big>
+                                    <font color="#f8a1a1">MISCHIEVOUS</font>
+                                </big>
+                            </p>
+                        </div>
+                        <div class="ant_bot">
+                            <p>
+                                <br>
+                                <br>
+                                怪怪軍團攻陷愛爾琳
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <small><a href="./MISCHIEVOUS - Google Drive.html">Read more</a></small>
+                            </p>
+                        </div>
+                    </td>
+                    <td width="540px" height="250px" align="left">
+                        <div class="slideshow-container" data-slideshow="MISCHIEVOUS">
+                            <div class="slideshow-inner">
+                                <!-- 圖片將由 JavaScript 從 Google Drive 動態載入 -->
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    
+                    <td width="540px" height="250px" align="right">
+                        <div class="slideshow-container" data-slideshow="MOON_RABBITS">
+                            <div class="slideshow-inner">
+                                <!-- 圖片將由 JavaScript 從 Google Drive 動態載入 -->
+                            </div>
+                        </div>
+                    </td>
+                    <td width="540px" height="250px" align="left">
+                        <div class="ant_top">
+                            <p>
+                                <big>
+                                    <font color="#f8a1a1">MOON RABBITS</font>
+                                </big>
+                            </p>
+                        </div>
+                        <div class="ant_bot">
+                            <p>
+                                <br>
+                                <br>
+                                ​月兔，來襲
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <small><a href="./MOON RABBITS - Google Drive.html">Read more</a></small>
+                            </p>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center>
+        <!-- 版權聲明 -->
+        <small>
+            <p>&copy; 2024 SweetTears。保留所有權利。</p>
+        </small>
+    </center>
+
+    <script>
+        // ═══════════════════════════════════════════════════
+        // Google Drive 圖片配置
+        // ═══════════════════════════════════════════════════
+        // 將本地圖片路徑映射到 Google Drive 檔案 ID
+        // 如何取得檔案 ID：在 Google Drive 中右鍵點擊圖片 → 「取得連結」
+        // 從連結中複製檔案 ID（例如：https://drive.google.com/file/d/檔案ID/view）
+        // ═══════════════════════════════════════════════════
+        const imageFileIdMap = {
+            // DAILY PHOTO
+            'DAILY_PHOTO_1': '1lgWokrhkVNTjQiuVyRElLl0tn31ztsBo', // './Album/DAILY PHOTO/2017/0512.jpg'
+            'DAILY_PHOTO_2': '13FqtcYqb86qaGp2fL1zsXiDEQ0tr55UQ', // './Album/DAILY PHOTO/2022/2022_07_03_0001.png'
+            'DAILY_PHOTO_3': '1LiD7-XfRCdDlPtyzZK_fZ_92YdzghGBV', // './Album/DAILY PHOTO/2017/XX3.jpg'
+            'DAILY_PHOTO_4': '19ZY42E8imNfBCVB4HyOEzVh85NOfDbHa', // './Album/DAILY PHOTO/2018/2018_02_03_0004.jpg'
+            'DAILY_PHOTO_5': '14m4nUSo7DF1gHBFXdmIeKpqzoR0_He84', // './Album/DAILY PHOTO/2019/2019_09_03_0000.jpg'
+            
+            // 9TH ANNIVERSARY
+            '9TH_ANNIVERSARY_1': '1GX_TBqNMwteAXOuRhxzWUAPJBoJ02FWq', // './Album/9TH ANNIVERSARY/1heroes_x64 2024-08-25 22-39-03.png'
+            '9TH_ANNIVERSARY_2': '1s5jcs22NahiH9AUJq298a2SoWMpJkvdY', // './Album/9TH ANNIVERSARY/1heroes_x64 2024-08-25 22-39-12.png'
+            '9TH_ANNIVERSARY_3': '1DY1yguhOxEmQq9BVh_NeihKdZ2J6tJ2n', // './Album/9TH ANNIVERSARY/event4/2024_08_18_0001.png'
+            '9TH_ANNIVERSARY_4': '1TOTVSOsRNDsqr3lcVWCefLb3sRU9xE7p', // './Album/9TH ANNIVERSARY/event4/2024_08_23_0001.png'
+            '9TH_ANNIVERSARY_5': '1svIZltZVvT7RIztmJFeEcJcNqo6vPQ-R', // './Album/9TH ANNIVERSARY/event4/2024_08_24_0001 (1).png'
+            
+            // 7TH ANNIVERSARY
+            '7TH_ANNIVERSARY_1': '11FIvmi7yJ4AqFntXGd0fT5gukBJvdMSL', // './Album/7TH ANNIVERSARY/heroes_x64 2022-08-28 21-53-51.png'
+            '7TH_ANNIVERSARY_2': '1z96uMmrNanDOX5rXGh7ABuv4_mr09g7x', // './Album/7TH ANNIVERSARY/event4/2022_08_27_0001 (1).png'
+            '7TH_ANNIVERSARY_3': '1YCHsgQiOYc6iuv1xzTB6Ib7LBCv6RuHO', // './Album/7TH ANNIVERSARY/heroes_x64 2022-08-28 21-54-52.png'
+            '7TH_ANNIVERSARY_4': '1g5M3O2OCxAa_pQpQEBhVipeigDK9zM59', // './Album/7TH ANNIVERSARY/event5/2022_08_27_0013.png'
+            '7TH_ANNIVERSARY_5': '1WSPuGElEeN6ABk_RqipfLdozG45Tp8NP', // './Album/7TH ANNIVERSARY/heroes_x64 2022-08-28 21-56-40.png'
+            
+            // 6TH ANNIVERSARY
+            '6TH_ANNIVERSARY_1': '1byfqFWZGhRmLu3W2z2I2kNPXRnN32HaA', // './Album/6TH ANNIVERSARY/2021_12_18_0011.png'
+            '6TH_ANNIVERSARY_2': '1Gj55OujsyqgOUA-eQ3r1BGeJdbG1RIw9', // './Album/6TH ANNIVERSARY/event5/unknown (1).png'
+            '6TH_ANNIVERSARY_3': '1W-GI1tRfaSdvXMw7YAxOu2gkbYJeeAD4', // './Album/6TH ANNIVERSARY/heroes_x64_2021-12-18_23-15-19.png'
+            '6TH_ANNIVERSARY_4': '1XaHOwTGTGSfnWpLynQxnsMc-4Tmuz4Qv', // './Album/6TH ANNIVERSARY/event5/39b34a026aa25f80.png'
+            '6TH_ANNIVERSARY_5': '1EX37XCKESugQyBFYe_qArb1IqZN52J5e', // './Album/6TH ANNIVERSARY/2021_12_18_0011.png'
+            
+            // 2020 BOUNENNKAI
+            '2020_BOUNENNKAI_1': '12wWB0mS38nnoAaizLlAfYeVKpAVS7bjK', // './Album/2020忘年/2020_12_01_0002.jpg'
+            '2020_BOUNENNKAI_2': '1PRJpkR9wc7QAVMPO1C6QcBdfraKs5w-Q', // './Album/2020忘年/卡爺.png'
+            '2020_BOUNENNKAI_3': '1aondkvibp8dVsIVPz7XVb1LUW0JoWU6w', // './Album/2020忘年/周芷語.jpg'
+            '2020_BOUNENNKAI_4': '1nwaVC9nIP9sYYg79BrR2ysnKJSpoKyEu', // './Album/2020忘年/灰咕咕.jpg'
+            '2020_BOUNENNKAI_5': '1Y02mfIcv2ocT10ZGLYVwfLyLaJVks_xn', // './Album/2020忘年/阿wei.png'
+            
+            // AUGUST 16 2019
+            'AUGUST_16_2019_1': '1gCGViefzgeEhvxU8J2raKL1LLe1uxWON', // './Album/AUGUST 16 2019/2019_08_16_0000 (2).jpg'
+            'AUGUST_16_2019_2': '1G9LpjvwqxhjPtai7pPISrBOyDh8YSKPp', // './Album/AUGUST 16 2019/2019_08_16_0015.jpg'
+            'AUGUST_16_2019_3': '13pVgPqKv9FfuVH2mn2rsdqDFwIyhm4FO', // './Album/AUGUST 16 2019/2019_08_16_0026.jpg'
+            'AUGUST_16_2019_4': '1YhV3xJ6IA2PVgsP87h7L167F4E3o80QB', // './Album/AUGUST 16 2019/2019_08_16_0035_cam_2.png'
+            'AUGUST_16_2019_5': '1UdL-aXDpawnVitAToKYzPA5o36CkQMn7', // './Album/AUGUST 16 2019/unknown (3).png'
+            
+            // GUILD HOUSE
+            'GUILD_HOUSE_1': '1TGg5qzmWHuu8z3hSZ1HKN1FOwJGU1LpY', // './Album/GUILD HOUSE/2019_01_01_0000.jpg'
+            'GUILD_HOUSE_2': '1keXJ21j3BqQhCweVGJxKBm5cipljcF_L', // './Album/GUILD HOUSE/2019_01_20_0002.jpg'
+            'GUILD_HOUSE_3': '1pkwaQgOr-FNsf4HuL0bzueCXZZjMlWLE', // './Album/GUILD HOUSE/2019_01_20_0007.jpg'
+            'GUILD_HOUSE_4': '1nMO1U75YiVw2huZDvNZt85o0SzHRYKGJ', // './Album/GUILD HOUSE/2019_01_20_0010.jpg'
+            'GUILD_HOUSE_5': '1rwrrGcGzfZBitPL6dh5nVWnsU4pNanhg', // './Album/GUILD HOUSE/2019_01_20_0017.jpg'
+            
+            // MISCHIEVOUS
+            'MISCHIEVOUS_1': '1Xko8y2HnNKVA_VwAhouJnPzqyGN-XWDX', // './Album/MISCHIEVOUS/20170422 邪教_180918_0002.jpg'
+            'MISCHIEVOUS_2': '1y2d5qyMfSSuIXOcdluLTjS7YdlvfwPmr', // './Album/MISCHIEVOUS/20170422 邪教_180918_0012.jpg'
+            'MISCHIEVOUS_3': '1z_cJ_KJyHVG2d2LeIew5cCO0DMyJmV7X', // './Album/MISCHIEVOUS/20170422 邪教_180918_0017.jpg'
+            'MISCHIEVOUS_4': '1HPS9kFhsjsf1R718rCS0jE0Nfsz7DprI', // './Album/MISCHIEVOUS/20170422 邪教_180918_0025.jpg'
+            'MISCHIEVOUS_5': '1a0Q56gzUrrPz1WRbEufuliOmF1o4G0pg', // './Album/MISCHIEVOUS/20170422 邪教_180918_0034.jpg'
+            
+            // MOON RABBITS
+            'MOON_RABBITS_1': '1Cgz1hEfpZ19lswHK7iBapQbJDrAtj-12', // './Album/MOON RABBITS/庫漢雕像館兔兔之亂(X_180918_0011.jpg'
+            'MOON_RABBITS_2': '1cjvYppuhNLI8Dkgv3GLqWEkAQAM4K3BG', // './Album/MOON RABBITS/庫漢雕像館兔兔之亂(X_180918_0003.jpg'
+            'MOON_RABBITS_3': '1oACj5rId3Y0pjfcaOJn_rLWCCSBkwoWM', // './Album/MOON RABBITS/庫漢雕像館兔兔之亂(X_180918_0006.jpg'
+            'MOON_RABBITS_4': '11r_cdUKU73vi0CLTrMPMteIjDIwVdIbM', // './Album/MOON RABBITS/庫漢雕像館兔兔之亂(X_180918_0009.jpg'
+            'MOON_RABBITS_5': '1y3N5Q37kRAKWesu7H18RZefCmE-M2mIW'  // './Album/MOON RABBITS/庫漢雕像館兔兔之亂(X_180918_0001.jpg'
+        };
+        
+        // 定義每個輪播區域需要的圖片 ID 列表
+        const slideshowConfig = {
+            'DAILY_PHOTO': ['DAILY_PHOTO_1', 'DAILY_PHOTO_2', 'DAILY_PHOTO_3', 'DAILY_PHOTO_4', 'DAILY_PHOTO_5'],
+            '9TH_ANNIVERSARY': ['9TH_ANNIVERSARY_1', '9TH_ANNIVERSARY_2', '9TH_ANNIVERSARY_3', '9TH_ANNIVERSARY_4', '9TH_ANNIVERSARY_5'],
+            '7TH_ANNIVERSARY': ['7TH_ANNIVERSARY_1', '7TH_ANNIVERSARY_2', '7TH_ANNIVERSARY_3', '7TH_ANNIVERSARY_4', '7TH_ANNIVERSARY_5'],
+            '6TH_ANNIVERSARY': ['6TH_ANNIVERSARY_1', '6TH_ANNIVERSARY_2', '6TH_ANNIVERSARY_3', '6TH_ANNIVERSARY_4', '6TH_ANNIVERSARY_5'],
+            '2020_BOUNENNKAI': ['2020_BOUNENNKAI_1', '2020_BOUNENNKAI_2', '2020_BOUNENNKAI_3', '2020_BOUNENNKAI_4', '2020_BOUNENNKAI_5'],
+            'AUGUST_16_2019': ['AUGUST_16_2019_1', 'AUGUST_16_2019_2', 'AUGUST_16_2019_3', 'AUGUST_16_2019_4', 'AUGUST_16_2019_5'],
+            'GUILD_HOUSE': ['GUILD_HOUSE_1', 'GUILD_HOUSE_2', 'GUILD_HOUSE_3', 'GUILD_HOUSE_4', 'GUILD_HOUSE_5'],
+            'MISCHIEVOUS': ['MISCHIEVOUS_1', 'MISCHIEVOUS_2', 'MISCHIEVOUS_3', 'MISCHIEVOUS_4', 'MISCHIEVOUS_5'],
+            'MOON_RABBITS': ['MOON_RABBITS_1', 'MOON_RABBITS_2', 'MOON_RABBITS_3', 'MOON_RABBITS_4', 'MOON_RABBITS_5']
+        };
+        
+        // 將檔案 ID 轉換為 Google Drive 圖片 URL
+        // 注意：Google Drive 圖片需要檔案設為「公開」或「知道連結的使用者」
+        // 如果設為「知道連結的使用者」，可能無法直接顯示，需要改用其他方式
+        function getGoogleDriveImageUrl(fileId) {
+            if (!fileId || fileId.trim() === '') return '';
+            // 方式1：標準的公開圖片連結（最常用）
+            return `https://drive.google.com/uc?export=view&id=${fileId}`;
+        }
+        
+        // 備用的圖片 URL 格式
+        function getGoogleDriveImageUrlAlternative(fileId) {
+            if (!fileId || fileId.trim() === '') return '';
+            // 方式2：使用 Google 縮圖服務（需要檔案公開）
+            return `https://lh3.googleusercontent.com/d/${fileId}`;
+        }
+        
+        // 方式3：使用 thumbnail 服務
+        function getGoogleDriveImageUrlThumbnail(fileId) {
+            if (!fileId || fileId.trim() === '') return '';
+            return `https://drive.google.com/thumbnail?id=${fileId}&sz=w1000`;
+        }
+        
+        // 載入所有輪播區域的圖片
+        function loadSlideshows() {
+            const slideshowContainers = document.querySelectorAll('[data-slideshow]');
+            
+            slideshowContainers.forEach(function(container) {
+                const slideshowId = container.getAttribute('data-slideshow');
+                const innerDiv = container.querySelector('.slideshow-inner');
+                
+                if (!innerDiv || !slideshowConfig[slideshowId]) return;
+                
+                // 清空容器
+                innerDiv.innerHTML = '';
+                
+                // 根據配置載入圖片
+                const imageKeys = slideshowConfig[slideshowId];
+                const validKeys = [];
+                
+                // 先收集所有有效的圖片鍵
+                imageKeys.forEach(function(imageKey) {
+                    const fileId = imageFileIdMap[imageKey];
+                    if (fileId && fileId.trim() !== '') {
+                        validKeys.push(imageKey);
+                    }
+                });
+                
+                if (validKeys.length === 0) return;
+                
+                // 創建真實的 slides
+                validKeys.forEach(function(imageKey, index) {
+                    const fileId = imageFileIdMap[imageKey];
+                    const slideDiv = document.createElement('div');
+                    slideDiv.className = 'mySlides';
+                    
+                    const img = document.createElement('img');
+                    const imageUrl = getGoogleDriveImageUrl(fileId);
+                    img.src = imageUrl;
+                    img.style.height = '250px';
+                    img.style.objectFit = 'contain';
+                    
+                    // 添加錯誤處理和備用方案
+                    var originalSrc = imageUrl;
+                    var tryCount = 0;
+                    var maxTries = 3;
+                    
+                    img.onerror = function() {
+                        tryCount++;
+                        console.error('圖片載入失敗 (嘗試 ' + tryCount + '/' + maxTries + '):', imageKey, fileId, this.src);
+                        
+                        // 嘗試備用 URL 格式
+                        if (tryCount === 1) {
+                            // 第一次失敗，嘗試備用格式 1
+                            const altUrl1 = getGoogleDriveImageUrlAlternative(fileId);
+                            if (altUrl1 && this.src !== altUrl1) {
+                                console.log('嘗試備用 URL 1:', altUrl1);
+                                this.src = altUrl1;
+                                return;
+                            }
+                        } else if (tryCount === 2) {
+                            // 第二次失敗，嘗試備用格式 2
+                            const altUrl2 = getGoogleDriveImageUrlThumbnail(fileId);
+                            if (altUrl2 && this.src !== altUrl2) {
+                                console.log('嘗試備用 URL 2:', altUrl2);
+                                this.src = altUrl2;
+                                return;
+                            }
+                        }
+                        
+                        // 所有嘗試都失敗，顯示錯誤提示
+                        if (tryCount >= maxTries) {
+                            this.style.backgroundColor = '#ddd';
+                            this.style.display = 'flex';
+                            this.style.alignItems = 'center';
+                            this.style.justifyContent = 'center';
+                            this.style.height = '250px';
+                            this.style.width = '100%';
+                            this.alt = '圖片載入失敗：請確認檔案 ID 正確，並確保檔案權限設為「公開」';
+                        }
+                    };
+                    
+                    img.onload = function() {
+                        console.log('圖片載入成功:', imageKey, fileId);
+                    };
+                    
+                    slideDiv.appendChild(img);
+                    innerDiv.appendChild(slideDiv);
+                });
+            });
+            
+            // 圖片載入完成後，初始化輪播功能
+            setTimeout(function() {
+                initSlideshows();
+            }, 300);
+        }
+        
+        // 頁面載入時執行
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadSlideshows);
+        } else {
+            loadSlideshows();
+        }
+        
+        // 初始化輪播功能（每個輪播區域獨立運行，支援循環效果）
+        function initSlideshows() {
+            const slideshowContainers = document.querySelectorAll('[data-slideshow]');
+            
+            slideshowContainers.forEach(function(container) {
+                const innerDiv = container.querySelector('.slideshow-inner');
+                if (!innerDiv) return;
+                
+                const slides = innerDiv.querySelectorAll('.mySlides');
+                if (slides.length === 0) return;
+                
+                const containerWidth = container.offsetWidth || 540;
+                var slideIndex = 0;
+                
+                function showSlides() {
+                    slideIndex++;
+                    if (slideIndex > slides.length) {
+                        slideIndex = 1;
+                    }
+                    // 使用實際像素值計算，確保精確對齊
+                    const translateX = -(slideIndex - 1) * containerWidth;
+                    innerDiv.style.transition = "transform 0.8s ease";
+                    innerDiv.style.transform = "translateX(" + translateX + "px)";
+                    setTimeout(showSlides, 2000); // Change image every 2 seconds
+                }
+                
+                showSlides();
+            });
+        }
+        
+    </script>
+</body>
+
+
+</html>
+

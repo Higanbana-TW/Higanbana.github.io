@@ -140,6 +140,46 @@
         .navbar .active {
             color: rgb(250, 136, 136);
         }
+        /* 錯誤回報樣式 */
+        .error-report-item {
+            background-color: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .error-report-item:hover {
+            background-color: #ffe69c;
+        }
+        .error-report-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .error-report-preview {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .error-report-full {
+            display: none;
+            color: #333;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            margin-top: 10px;
+            line-height: 1.5;
+        }
+        .error-report-full.expanded {
+            display: block;
+        }
+        .error-report-meta {
+            font-size: 12px;
+            color: #999;
+        }
     </style>
 </head>
 
@@ -170,6 +210,10 @@
             <div class="stat-card">
                 <div class="stat-number" id="commentCount">0</div>
                 <div class="stat-label">總留言數</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="errorReportCount">0</div>
+                <div class="stat-label">錯誤回報</div>
             </div>
         </div>
         
@@ -204,6 +248,17 @@
                 <div class="no-members">點擊「刷新留言」載入所有活動留言</div>
             </div>
         </div>
+        
+        <div class="section">
+            <h3>⚠️ 錯誤回報管理</h3>
+            <div style="margin-bottom: 20px;">
+                <button onclick="loadErrorReports()" class="btn btn-approve" style="margin-right: 10px;">刷新回報</button>
+                <button onclick="clearAllErrorReports()" class="btn btn-remove">清空所有回報</button>
+            </div>
+            <div id="errorReportsManagement" class="member-list">
+                <div class="no-members">點擊「刷新回報」載入所有錯誤回報</div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -213,6 +268,7 @@
             loadApprovedMembers();
             loadGuestMembers();
             updateStats();
+            loadErrorReports();
         }
         
         // 載入待審核成員
@@ -290,6 +346,10 @@
             // 計算總留言數
             const totalComments = getAllCommentsCount();
             document.getElementById('commentCount').textContent = totalComments;
+            
+            // 計算錯誤回報數
+            const errorReports = JSON.parse(localStorage.getItem('errorReports') || '[]');
+            document.getElementById('errorReportCount').textContent = errorReports.length;
         }
         
         // 獲取所有留言的總數
@@ -496,6 +556,76 @@
                 // 重新載入數據
                 loadAllData();
                 alert(`${guestName} 的訪客資格已移除！`);
+            }
+        }
+        
+        // 載入錯誤回報
+        function loadErrorReports() {
+            const errorReports = JSON.parse(localStorage.getItem('errorReports') || '[]');
+            const container = document.getElementById('errorReportsManagement');
+            
+            // 按時間排序（最新的在前）
+            errorReports.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            
+            if (errorReports.length === 0) {
+                container.innerHTML = '<div class="no-members">目前沒有任何錯誤回報</div>';
+                return;
+            }
+            
+            container.innerHTML = errorReports.map((report, index) => {
+                const preview = report.message.length > 10 ? report.message.substring(0, 10) + '...' : report.message;
+                const fullId = 'errorFull' + report.id;
+                
+                return `
+                    <div class="error-report-item" onclick="toggleErrorReport('${fullId}')">
+                        <div class="error-report-header">
+                            <div>
+                                <strong style="color: #333;">${escapeHtml(report.user)}</strong>
+                                <span class="error-report-meta"> - ${escapeHtml(report.page)}</span>
+                            </div>
+                            <div class="error-report-meta">${escapeHtml(report.timestamp)}</div>
+                        </div>
+                        <div class="error-report-preview">${escapeHtml(preview)}</div>
+                        <div id="${fullId}" class="error-report-full">
+                            ${escapeHtml(report.message)}
+                        </div>
+                        <div class="member-actions" style="margin-top: 10px;">
+                            <button class="btn btn-remove" onclick="event.stopPropagation(); deleteErrorReport('${escapeHtml(report.id)}')">刪除</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        // 切換錯誤回報全文顯示
+        function toggleErrorReport(fullId) {
+            const fullElement = document.getElementById(fullId);
+            if (fullElement) {
+                fullElement.classList.toggle('expanded');
+            }
+        }
+        
+        // 刪除單個錯誤回報
+        function deleteErrorReport(reportId) {
+            if (confirm('確定要刪除此錯誤回報嗎？')) {
+                const errorReports = JSON.parse(localStorage.getItem('errorReports') || '[]');
+                const updatedReports = errorReports.filter(report => report.id !== reportId);
+                localStorage.setItem('errorReports', JSON.stringify(updatedReports));
+                
+                // 重新載入錯誤回報
+                loadErrorReports();
+                updateStats();
+                alert('錯誤回報已刪除！');
+            }
+        }
+        
+        // 清空所有錯誤回報
+        function clearAllErrorReports() {
+            if (confirm('確定要清空所有錯誤回報嗎？此操作無法復原！')) {
+                localStorage.setItem('errorReports', JSON.stringify([]));
+                loadErrorReports();
+                updateStats();
+                alert('所有錯誤回報已清空！');
             }
         }
         
